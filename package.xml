@@ -10,7 +10,7 @@
   <email>slusarz@horde.org</email>
   <active>yes</active>
  </lead>
- <date>2017-06-22</date>
+ <date>2017-10-17</date>
  <version>
   <release>1.9.6</release>
   <api>1.9.0</api>
@@ -28,7 +28,6 @@
    <dir name="doc">
     <dir name="Horde">
      <dir name="Smtp">
-      <file name="COPYING" role="doc" />
       <file name="UPGRADING" role="doc" />
      </dir> <!-- /doc/Horde/Smtp -->
     </dir> <!-- /doc/Horde -->
@@ -111,6 +110,7 @@
      </dir> <!-- /test/Horde/Smtp -->
     </dir> <!-- /test/Horde -->
    </dir> <!-- /test -->
+   <file name="LICENSE" role="doc" />
   </dir> <!-- / -->
  </contents>
  <dependencies>
@@ -192,26 +192,26 @@
  </dependencies>
  <phprelease>
   <filelist>
-   <install as="COPYING" name="doc/Horde/Smtp/COPYING" />
    <install as="UPGRADING" name="doc/Horde/Smtp/UPGRADING" />
    <install as="Horde/Smtp.php" name="lib/Horde/Smtp.php" />
    <install as="Horde/Smtp/Connection.php" name="lib/Horde/Smtp/Connection.php" />
    <install as="Horde/Smtp/Debug.php" name="lib/Horde/Smtp/Debug.php" />
    <install as="Horde/Smtp/Exception.php" name="lib/Horde/Smtp/Exception.php" />
-   <install as="Horde/Smtp/Lmtp.php" name="lib/Horde/Smtp/Lmtp.php" />
-   <install as="Horde/Smtp/Password.php" name="lib/Horde/Smtp/Password.php" />
-   <install as="Horde/Smtp/Translation.php" name="lib/Horde/Smtp/Translation.php" />
    <install as="Horde/Smtp/Exception/Recipients.php" name="lib/Horde/Smtp/Exception/Recipients.php" />
    <install as="Horde/Smtp/Filter/Body.php" name="lib/Horde/Smtp/Filter/Body.php" />
    <install as="Horde/Smtp/Filter/Data.php" name="lib/Horde/Smtp/Filter/Data.php" />
+   <install as="Horde/Smtp/Lmtp.php" name="lib/Horde/Smtp/Lmtp.php" />
+   <install as="Horde/Smtp/Password.php" name="lib/Horde/Smtp/Password.php" />
    <install as="Horde/Smtp/Password/Xoauth2.php" name="lib/Horde/Smtp/Password/Xoauth2.php" />
-   <install as="locale/Horde_Smtp.pot" name="locale/Horde_Smtp.pot" />
+   <install as="Horde/Smtp/Translation.php" name="lib/Horde/Smtp/Translation.php" />
+   <install as="LICENSE" name="LICENSE" />
    <install as="locale/da/LC_MESSAGES/Horde_Smtp.mo" name="locale/da/LC_MESSAGES/Horde_Smtp.mo" />
    <install as="locale/da/LC_MESSAGES/Horde_Smtp.po" name="locale/da/LC_MESSAGES/Horde_Smtp.po" />
    <install as="locale/el/LC_MESSAGES/Horde_Smtp.mo" name="locale/el/LC_MESSAGES/Horde_Smtp.mo" />
    <install as="locale/el/LC_MESSAGES/Horde_Smtp.po" name="locale/el/LC_MESSAGES/Horde_Smtp.po" />
    <install as="locale/es/LC_MESSAGES/Horde_Smtp.mo" name="locale/es/LC_MESSAGES/Horde_Smtp.mo" />
    <install as="locale/es/LC_MESSAGES/Horde_Smtp.po" name="locale/es/LC_MESSAGES/Horde_Smtp.po" />
+   <install as="locale/Horde_Smtp.pot" name="locale/Horde_Smtp.pot" />
    <install as="locale/hu/LC_MESSAGES/Horde_Smtp.mo" name="locale/hu/LC_MESSAGES/Horde_Smtp.mo" />
    <install as="locale/hu/LC_MESSAGES/Horde_Smtp.po" name="locale/hu/LC_MESSAGES/Horde_Smtp.po" />
    <install as="locale/ja/LC_MESSAGES/Horde_Smtp.mo" name="locale/ja/LC_MESSAGES/Horde_Smtp.mo" />
@@ -583,7 +583,7 @@
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2017-06-22</date>
+   <date>2017-10-17</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
 * 
