@@ -28,7 +28,7 @@
    <dir name="doc">
     <dir name="Horde">
      <dir name="Smtp">
-      <file name="UPGRADING" role="doc" />
+      <file name="UPGRADING.rst" role="doc" />
      </dir> <!-- /doc/Horde/Smtp -->
     </dir> <!-- /doc/Horde -->
    </dir> <!-- /doc -->
@@ -192,7 +192,7 @@
  </dependencies>
  <phprelease>
   <filelist>
-   <install as="UPGRADING" name="doc/Horde/Smtp/UPGRADING" />
+   <install as="UPGRADING.rst" name="doc/Horde/Smtp/UPGRADING.rst" />
    <install as="Horde/Smtp.php" name="lib/Horde/Smtp.php" />
    <install as="Horde/Smtp/Connection.php" name="lib/Horde/Smtp/Connection.php" />
    <install as="Horde/Smtp/Debug.php" name="lib/Horde/Smtp/Debug.php" />
