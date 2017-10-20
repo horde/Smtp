@@ -10,7 +10,7 @@
   <email>slusarz@horde.org</email>
   <active>yes</active>
  </lead>
- <date>2017-10-17</date>
+ <date>2017-10-20</date>
  <version>
   <release>1.9.6</release>
   <api>1.9.0</api>
@@ -104,7 +104,6 @@
       <file name="conf.php.dist" role="test" />
       <file name="FilterBodyTest.php" role="test" />
       <file name="FilterDataTest.php" role="test" />
-      <file name="phpunit.xml" role="test" />
       <file name="RemoteServerTest.php" role="test" />
       <file name="Xoauth2Test.php" role="test" />
      </dir> <!-- /test/Horde/Smtp -->
@@ -223,7 +222,6 @@
    <install as="Horde/Smtp/conf.php.dist" name="test/Horde/Smtp/conf.php.dist" />
    <install as="Horde/Smtp/FilterBodyTest.php" name="test/Horde/Smtp/FilterBodyTest.php" />
    <install as="Horde/Smtp/FilterDataTest.php" name="test/Horde/Smtp/FilterDataTest.php" />
-   <install as="Horde/Smtp/phpunit.xml" name="test/Horde/Smtp/phpunit.xml" />
    <install as="Horde/Smtp/RemoteServerTest.php" name="test/Horde/Smtp/RemoteServerTest.php" />
    <install as="Horde/Smtp/Xoauth2Test.php" name="test/Horde/Smtp/Xoauth2Test.php" />
   </filelist>
@@ -583,7 +581,7 @@
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2017-10-17</date>
+   <date>2017-10-20</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
 * 
