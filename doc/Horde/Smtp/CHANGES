@@ -1,0 +1,212 @@
+----------
+v1.9.6-git
+----------
+
+
+------
+v1.9.5
+------
+
+[jan] Add Turkish translation (İTÜ BİDB <sistemdestek@itu.edu.tr>).
+
+
+------
+v1.9.4
+------
+
+[mjr] Fix RFC 3030 (CHUNKING) support.
+
+
+------
+v1.9.3
+------
+
+[jan] Add Greek translation (Limperis Antonis <limperis@cti.gr>).
+
+
+------
+v1.9.2
+------
+
+[jan] Mark PHP 7 as supported.
+
+
+------
+v1.9.1
+------
+
+[jan] Fix issues with certain locales like Turkish.
+
+
+------
+v1.9.0
+------
+
+[mms] Fix sending BODY keyword when debugging and SMTP server does not support
+      8BITMIME extension.
+[jan] Add parameter for stream context settings (Request #13730).
+[jan] Fix notice if server doesn't support ENHANCEDSTATUSCODES.
+[mms] Add 'localhost' parameter to Horde_Smtp (Request #13832).
+
+
+------
+v1.8.0
+------
+
+[mms] Failed recipients can now be determined via the
+      Horde_Smtp_Exception_Recipients exception thrown when calling
+      Horde_Smtp#send().
+
+
+------
+v1.7.0
+------
+
+[mms] Added Horde_Smtp_Exception property indicating whether error is permanent
+      or transient.
+[mms] Determine EAI and Body transport information by analyzing the message
+      data, instead of requiring a parameter.
+[mms] Add support for ETRN extension (RFC 1985).
+[mms] Add support for BINARYMIME extension (RFC 3030).
+[mms] Add support for CHUNKING extension (RFC 3030).
+
+
+------
+v1.6.0
+------
+
+[mms] Added support for sending internationalized header data (RFC 6531).
+
+
+------
+v1.5.2
+------
+
+[jan] Add Spanish translation (Manuel Perez Ayala <mperaya@alcazaba.unex.es>).
+
+
+------
+v1.5.1
+------
+
+[jan] Add Japanese translation (Hiromi Kimura <hiromi@tac.tsukuba.ac.jp>).
+
+
+------
+v1.5.0
+------
+
+[mms] Fix harmless undefined error when accessing certain configuration
+      parameters.
+[mms] Horde_Smtp#send() now returns recipient status information if at least
+      one recipient was successfully accepted.
+[mms] Added an LMTP (RFC 2033) driver.
+[jan] Add Hungarian translation (Andras Galos <galosa@netinform.hu>).
+
+
+------
+v1.4.1
+------
+
+[jan] Add Danish translation (Erling Preben Hansen <erling@eph.dk>).
+[mms] The mail submission port (587) should be default of this library.
+[mms] Better exception message for a 550 error, since it is common and may be
+      displayed to an end user (Request #12990).
+
+
+------
+v1.4.0
+------
+
+[mms] Add raw error message text (in English) to Exceptions.
+
+
+------
+v1.3.1
+------
+
+[mms] Fix handling servers that don't support ESMTP (Bug #12853).
+[mms] Fix returning reply code in Exceptions.
+
+
+------
+v1.3.0
+------
+
+[mms] Added direct TLS v1.x connection option when connecting to remote server.
+[mms] Added Horde_Smtp_Password_Xoauth2 class.
+
+
+------
+v1.2.6
+------
+
+[mms] Fix handling EOLs split on a stream bucket boundary (Bug #12763).
+
+
+------
+v1.2.5
+------
+
+[mms] Fix escaping periods that begin a line of DATA input.
+
+
+------
+v1.2.4
+------
+
+[mms] Explicitly reject XOAUTH2 as a authentication mechanism if it is not
+      configured in the client.
+[jan] Fix reading translations in PEAR-installed package.
+
+
+------
+v1.2.3
+------
+
+[mms] Fix parsing SMTP error message on servers that support
+      ENHANCEDSTATUSCODES (Bug #12666).
+
+
+------
+v1.2.2
+------
+
+[mms] Fix aborting a pipelined DATA command if only a subset of recipients were
+      rejected (Bug #12659).
+[mms] Don't auto-detect TLS availability again once we have done initial
+      detection.
+
+
+------
+v1.2.1
+------
+
+[mms] Transparently handle required TLS connection when no security was
+      configured.
+
+
+------
+v1.2.0
+------
+
+[mms] Change default security to use TLS, if available.
+[mms] Fix storing password object in the Horde_Smtp object.
+
+
+------
+v1.1.0
+------
+
+[mms] Deprecated the 'password_encrypt' parameter and instead support passing a
+      Horde_Smtp_Password object into the 'password' parameter.
+[mms] Fix DIGEST-MD5 authentication method.
+[mms] Added support for the Google XOAuth2 authentication mechanism.
+[jan] Fix detecting if connection to SMTP server fails.
+
+
+------
+v1.0.0
+------
+
+[mms] Initial release.

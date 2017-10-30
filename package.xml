@@ -10,7 +10,7 @@
   <email>slusarz@horde.org</email>
   <active>yes</active>
  </lead>
- <date>2017-06-22</date>
+ <date>2017-10-30</date>
  <version>
   <release>1.9.6</release>
   <api>1.9.0</api>
@@ -28,6 +28,7 @@
    <dir name="doc">
     <dir name="Horde">
      <dir name="Smtp">
+      <file name="CHANGES" role="doc" />
       <file name="COPYING" role="doc" />
       <file name="UPGRADING" role="doc" />
      </dir> <!-- /doc/Horde/Smtp -->
@@ -192,6 +193,7 @@
  </dependencies>
  <phprelease>
   <filelist>
+   <install as="CHANGES" name="doc/Horde/Smtp/CHANGES" />
    <install as="COPYING" name="doc/Horde/Smtp/COPYING" />
    <install as="UPGRADING" name="doc/Horde/Smtp/UPGRADING" />
    <install as="Horde/Smtp.php" name="lib/Horde/Smtp.php" />
@@ -583,7 +585,7 @@
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2017-06-22</date>
+   <date>2017-10-30</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
 * 
