@@ -1,8 +1,8 @@
 {
     "name": "horde/smtp",
-    "description": "Horde SMTP Client",
+    "description": "SMTP client library",
     "type": "library",
-    "homepage": "https://pear.horde.org",
+    "homepage": "https://www.horde.org",
     "license": "LGPL-2.1",
     "authors": [
         {
@@ -12,7 +12,7 @@
         }
     ],
     "version": "1.9.6",
-    "time": "2017-10-20",
+    "time": "2017-11-11",
     "repositories": [
         {
             "type": "pear",
