@@ -2,7 +2,7 @@
 id: Smtp
 name: Smtp
 full: SMTP client library
-description: >
+description: >-
   Provides interfaces for connecting to a SMTP (RFC 5321) server to send e-mail
   messages.
 list: dev
