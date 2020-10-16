@@ -167,7 +167,7 @@ class Horde_Smtp implements Serializable
             'port' => 587,
             'secure' => true,
             'timeout' => 30
-        ), array_filter($params));
+        ), $params);
 
         foreach ($params as $key => $val) {
             $this->setParam($key, $val);
