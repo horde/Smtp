@@ -12,7 +12,7 @@
  </lead>
  <date>2020-11-19</date>
  <version>
-  <release>1.9.6</release>
+  <release>1.9.7</release>
   <api>1.9.0</api>
  </version>
  <stability>
@@ -21,7 +21,7 @@
  </stability>
  <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
  <notes>
-* [jan] Allow unencrypted access (nhirokinet@nhiroki.net, PR #1).
+* 
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -229,6 +229,32 @@
   </filelist>
  </phprelease>
  <changelog>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   <release>
    <version>
     <release>1.0.0</release>
@@ -633,10 +659,25 @@
     <release>stable</release>
     <api>stable</api>
    </stability>
-   <date>2017-10-20</date>
+   <date>2020-11-19</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
 * [jan] Allow unencrypted access (nhirokinet@nhiroki.net, PR #1).
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.9.7</release>
+    <api>1.9.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2020-11-19</date>
+   <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
+   <notes>
+* 
    </notes>
   </release>
  </changelog>

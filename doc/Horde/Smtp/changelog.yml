@@ -1,4 +1,15 @@
 ---
+1.9.7:
+  api: 1.9.0
+  state:
+    release: stable
+    api: stable
+  date: 2020-11-19
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |+
+    
 1.9.6:
   api: 1.9.0
   state:
