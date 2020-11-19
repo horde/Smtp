@@ -8,7 +8,8 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes:
+  notes: |
+    [jan] Allow unencrypted access (nhirokinet@nhiroki.net, PR #1).
 1.9.5:
   api: 1.9.0
   state:
