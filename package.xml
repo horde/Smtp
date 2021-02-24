@@ -12,7 +12,7 @@
  </lead>
  <date>2021-02-24</date>
  <version>
-  <release>2.0.0alpha1</release>
+  <release>2.0.0alpha2</release>
   <api>2.0.0alpha1</api>
  </version>
  <stability>
@@ -164,6 +164,32 @@
   </filelist>
  </phprelease>
  <changelog>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   <release>
    <version>
     <release>1.0.0</release>
@@ -565,10 +591,25 @@
     <api>2.0.0alpha1</api>
    </version>
    <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2021-02-24</date>
+   <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
+   <notes>
+* 
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.0alpha2</release>
+    <api>2.0.0alpha1</api>
+   </version>
+   <stability>
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2017-10-20</date>
+   <date>2021-02-24</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
 * 
