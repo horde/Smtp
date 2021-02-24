@@ -2,9 +2,7 @@
 id: Smtp
 name: Smtp
 full: SMTP client library
-description: >-
-  A library for connecting to a SMTP (RFC 5321) server to send e-mail
-  messages.
+description: A library for connecting to a SMTP (RFC 5321) server to send e-mail messages.
 list: dev
 type: library
 authors:
@@ -15,11 +13,11 @@ authors:
     active: false
     role: lead
 version:
-  release: 1.9.6
-  api: 1.9.0
+  release: 2.0.0alpha1
+  api: 2.0.0alpha1
 state:
-  release: stable
-  api: stable
+  release: alpha
+  api: alpha
 license:
   identifier: LGPL-2.1
   uri: http://www.horde.org/licenses/lgpl21
