@@ -11,6 +11,9 @@
  * @package    Smtp
  * @subpackage UnitTests
  */
+namespace Horde\Smtp;
+use Horde_Test_Case;
+use stdClass;
 
 /**
  * Test for the SMTP BODY filter.
@@ -23,7 +26,7 @@
  * @package    Smtp
  * @subpackage UnitTests
  */
-class Horde_Smtp_FilterBodyTest extends Horde_Test_Case
+class FilterBodyTest extends Horde_Test_Case
 {
     /**
      * @dataProvider bodyFilterProvider()

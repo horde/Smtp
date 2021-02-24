@@ -1,4 +1,36 @@
 ---
+2.0.0alpha3:
+  api: 2.0.0alpha1
+  state:
+    release: alpha
+    api: alpha
+  date: 2021-02-24
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |+
+    
+2.0.0alpha2:
+  api: 2.0.0alpha1
+  state:
+    release: alpha
+    api: alpha
+  date: 2021-02-24
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |+
+2.0.0alpha1:
+  api: 2.0.0alpha1
+  state:
+    release: stable
+    api: stable
+  date: 2021-02-24
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |
+  [rla] Initial release for composer.
 1.9.7:
   api: 1.9.0
   state:
@@ -32,8 +64,7 @@
     uri: http://www.horde.org/licenses/lgpl21
   notes: |
     [jan] Add Turkish translation (İTÜ BİDB <sistemdestek@itu.edu.tr>).
-1.9.4:
-  api: 1.9.0
+1.9.4:  api: 1.9.0
   state:
     release: stable
     api: stable
