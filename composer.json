@@ -21,18 +21,18 @@
     ],
     "require": {
         "horde/horde-installer-plugin": "*",
-        "php": "^5.3 || ^7",
-        "horde/exception": "^2",
-        "horde/mail": "^2",
-        "horde/socket_client": "^2",
-        "horde/support": "^2",
-        "horde/translation": "^2.2",
-        "horde/util": "^2"
+        "php": "^7",
+        "horde/exception": "^3",
+        "horde/mail": "^3",
+        "horde/socket_client": "^3",
+        "horde/support": "^3",
+        "horde/translation": "^3",
+        "horde/util": "^3"
     },
     "suggest": {
-        "horde/imap_client": "^2",
-        "horde/secret": "^2",
-        "horde/test": "^2.1"
+        "horde/imap_client": "^3",
+        "horde/secret": "^3",
+        "horde/test": "^3"
     },
     "autoload": {
         "psr-0": {
