@@ -11,6 +11,9 @@
  * @package    Smtp
  * @subpackage UnitTests
  */
+namespace Horde\Smtp;
+use PHPUnit\Framework\TestCase;
+use \Horde_Smtp_Password_Xoauth2;
 
 /**
  * Tests for the mailbox object.
@@ -23,7 +26,7 @@
  * @package    Smtp
  * @subpackage UnitTests
  */
-class Horde_Smtp_Xoauth2Test extends PHPUnit_Framework_TestCase
+class Xoauth2Test extends TestCase
 {
 
     public function testTokenGeneration()
