@@ -4,12 +4,13 @@
   state:
     release: alpha
     api: alpha
-  date: 2021-02-24
+  date: 2022-11-05
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |+
-    
+  notes: |
+    [rla] Alpha release for PHP 8.
+    |+
 2.0.0alpha2:
   api: 2.0.0alpha1
   state:
@@ -30,7 +31,6 @@
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
   notes: |
-  [rla] Initial release for composer.
 1.9.7:
   api: 1.9.0
   state:
@@ -41,7 +41,6 @@
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
   notes: |+
-    
 1.9.6:
   api: 1.9.0
   state:
@@ -64,7 +63,8 @@
     uri: http://www.horde.org/licenses/lgpl21
   notes: |
     [jan] Add Turkish translation (İTÜ BİDB <sistemdestek@itu.edu.tr>).
-1.9.4:  api: 1.9.0
+1.9.4:
+  api: 1.9.0
   state:
     release: stable
     api: stable

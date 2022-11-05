@@ -1,8 +1,7 @@
 {
-    "minimum-stability": "dev",
     "name": "horde/smtp",
     "description": "SMTP client library",
-    "type": "horde-library",
+    "type": "library",
     "homepage": "https://www.horde.org",
     "license": "LGPL-2.1-only",
     "authors": [
@@ -12,15 +11,14 @@
             "role": "lead"
         }
     ],
-    "time": "2021-02-24",
+    "time": "2022-11-05",
     "repositories": [
         {
             "type": "composer",
-            "url": "https://horde-satis.maintaina.com/"
+            "url": "https://horde-satis.maintaina.com"
         }
     ],
     "require": {
-        "horde/horde-installer-plugin": "^2 || dev-FRAMEWORK_6_0",
         "php": "^7.4 || ^8",
         "horde/exception": "^3 || dev-FRAMEWORK_6_0",
         "horde/mail": "^3 || dev-FRAMEWORK_6_0",
@@ -29,6 +27,7 @@
         "horde/translation": "^3 || dev-FRAMEWORK_6_0",
         "horde/util": "^3 || dev-FRAMEWORK_6_0"
     },
+    "require-dev": {},
     "suggest": {
         "horde/imap_client": "^3 || dev-FRAMEWORK_6_0",
         "horde/secret": "^3 || dev-FRAMEWORK_6_0",
@@ -37,6 +36,16 @@
     "autoload": {
         "psr-0": {
             "Horde_Smtp": "lib/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Horde\\Smtp\\Test\\": "test/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "horde/horde-installer-plugin": true
         }
     }
 }
