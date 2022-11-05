@@ -2,7 +2,8 @@
 v2.0.0alpha3
 ------------
 
-
+[rla] Alpha release for PHP 8.
+|+
 
 
 ------------
@@ -15,14 +16,13 @@ v2.0.0alpha2
 v2.0.0alpha1
 ------------
 
-[rla] Initial release for composer.
+|
 
 ------
 v1.9.7
 ------
 
-
-
+|+
 
 ------
 v1.9.6

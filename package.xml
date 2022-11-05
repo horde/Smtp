@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+<package packagerversion="1.9.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
  <name>Horde_Smtp</name>
  <channel>pear.horde.org</channel>
  <summary>SMTP client library</summary>
@@ -10,7 +10,7 @@
   <email>slusarz@horde.org</email>
   <active>no</active>
  </lead>
- <date>2021-02-24</date>
+ <date>2022-11-05</date>
  <version>
   <release>2.0.0alpha3</release>
   <api>2.0.0alpha1</api>
@@ -19,12 +19,20 @@
   <release>alpha</release>
   <api>alpha</api>
  </stability>
- <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
+ <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1-only</license>
  <notes>
-* 
+* [rla] Alpha release for PHP 8.
+* |+
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
+   <dir name=".github">
+    <dir name="workflows">
+     <file name="ci.yml" role="php" />
+     <file name="phpdoc.yml" role="php" />
+     <file name="update-satis.yml" role="php" />
+    </dir> <!-- /.github/workflows -->
+   </dir> <!-- /.github -->
    <dir name="doc">
     <dir name="Horde">
      <dir name="Smtp">
@@ -116,9 +124,7 @@
  <dependencies>
   <required>
    <php>
-    <min>7.0.0</min>
-    <max>8.0.0alpha1</max>
-    <exclude>8.0.0alpha1</exclude>
+    <min>7.4.0</min>
    </php>
    <pearinstaller>
     <min>1.7.0</min>
@@ -127,8 +133,11 @@
  </dependencies>
  <phprelease>
   <filelist>
-   <install as="CHANGES" name="doc/Horde/Smtp/CHANGES" />
-   <install as="UPGRADING.rst" name="doc/Horde/Smtp/UPGRADING.rst" />
+   <install as="workflows/ci.yml" name=".github/workflows/ci.yml" />
+   <install as="workflows/phpdoc.yml" name=".github/workflows/phpdoc.yml" />
+   <install as="workflows/update-satis.yml" name=".github/workflows/update-satis.yml" />
+   <install as="Smtp/CHANGES" name="doc/Horde/Smtp/CHANGES" />
+   <install as="Smtp/UPGRADING.rst" name="doc/Horde/Smtp/UPGRADING.rst" />
    <install as="Horde/Smtp.php" name="lib/Horde/Smtp.php" />
    <install as="Horde/Smtp/Connection.php" name="lib/Horde/Smtp/Connection.php" />
    <install as="Horde/Smtp/Debug.php" name="lib/Horde/Smtp/Debug.php" />
@@ -563,8 +572,6 @@
    <version>
     <release>1.9.6</release>
     <api>1.9.0</api>
-    <release>2.0.0alpha1</release>
-    <api>2.0.0alpha1</api>
    </version>
    <stability>
     <release>stable</release>
@@ -573,9 +580,7 @@
    <date>2020-11-19</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
-   <date>2021-02-24</date>
-   <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
-   <notes>
+* [jan] Allow unencrypted access (nhirokinet@nhiroki.net, PR #1).
    </notes>
   </release>
   <release>
@@ -588,6 +593,28 @@
     <api>stable</api>
    </stability>
    <date>2020-11-19</date>
+   <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
+   <notes>
+* |+
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.0alpha1</release>
+    <api>2.0.0alpha1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2021-02-24</date>
+   <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
+   <notes>
+* |
+   </notes>
+  </release>
+  <release>
+   <version>
     <release>2.0.0alpha2</release>
     <api>2.0.0alpha1</api>
    </version>
@@ -611,9 +638,10 @@
     <api>alpha</api>
    </stability>
    <date>2021-02-24</date>
-   <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
+   <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1-only</license>
    <notes>
-* 
+* [rla] Alpha release for PHP 8.
+* |+
    </notes>
   </release>
  </changelog>
