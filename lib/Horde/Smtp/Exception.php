@@ -144,8 +144,8 @@ class Horde_Smtp_Exception extends Horde_Exception
     /**
      * Constructor.
      *
-     * @param string $msg  Error message (non-translated).
-     * @param code $code   Error code.
+     * @param string|null $message Error message (non-translated).
+     * @param int|null $code Error code.
      */
     public function __construct($message = null, $code = null)
     {
