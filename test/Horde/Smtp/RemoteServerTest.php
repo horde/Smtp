@@ -28,7 +28,7 @@ class Horde_Smtp_RemoteServerTest extends Horde_Test_Case
     private $config;
     private $smtp;
 
-    public function setUp()
+    public function setUp(): void
     {
         $config = self::getConfig('SMTP_TEST_CONFIG');
         if (is_null($config)) {
@@ -37,7 +37,7 @@ class Horde_Smtp_RemoteServerTest extends Horde_Test_Case
         $this->config = $config['smtp'];
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         if ($this->smtp) {
             unset($this->smtp);

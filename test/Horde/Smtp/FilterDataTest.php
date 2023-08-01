@@ -27,7 +27,7 @@ class Horde_Smtp_FilterDataTest extends Horde_Test_Case
 {
     const FILTER_ID = 'horde_smtp_data';
 
-    public function setUp()
+    public function setUp(): void
     {
         stream_filter_register(self::FILTER_ID, 'Horde_Smtp_Filter_Data');
     }
