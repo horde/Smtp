@@ -14,28 +14,22 @@
     "version": "1.9.7",
     "time": "2020-11-19",
     "repositories": [
-        {
-            "type": "pear",
-            "url": "https://pear.horde.org"
-        }
     ],
     "require": {
         "php": "^5.3 || ^7",
-        "pear-pear.horde.org/Horde_Exception": "^2",
-        "pear-pear.horde.org/Horde_Mail": "^2",
-        "pear-pear.horde.org/Horde_Socket_Client": "^2",
-        "pear-pear.horde.org/Horde_Support": "^2",
-        "pear-pear.horde.org/Horde_Translation": "^2.2",
-        "pear-pear.horde.org/Horde_Util": "^2"
+        "horde/exception": "^2",
+        "horde/mail": "^2",
+        "horde/socket_client": "^2",
+        "horde/support": "^2",
+        "horde/translation": "^2.2",
+        "horde/util": "^2"
     },
     "suggest": {
-        "pear-pear.horde.org/Horde_Imap_Client": "^2",
-        "pear-pear.horde.org/Horde_Secret": "^2",
-        "pear-pear.horde.org/Horde_Test": "^2.1"
+        "horde/imap_client": "^2",
+        "horde/secret": "^2",
+        "horde/test": "^2.1"
     },
     "replace": {
-        "pear-pear.horde.org/Horde_Smtp": "1.*",
-        "pear-horde/Horde_Smtp": "1.*"
     },
     "autoload": {
         "psr-0": {
