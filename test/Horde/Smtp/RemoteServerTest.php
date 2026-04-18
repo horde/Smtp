@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2013-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2013-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -11,7 +12,9 @@
  * @package    Smtp
  * @subpackage UnitTests
  */
+
 namespace Horde\Smtp;
+
 use Horde_Test_Case;
 
 /**
@@ -24,6 +27,7 @@ use Horde_Test_Case;
  * @license    http://www.horde.org/licenses/lgpl21 LGPL 2.1
  * @package    Smtp
  * @subpackage UnitTests
+ * @coversNothing
  */
 class RemoteServerTest extends Horde_Test_Case
 {

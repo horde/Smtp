@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2014-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2014-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -35,14 +36,14 @@ class Horde_Smtp_Lmtp extends Horde_Smtp
     /**
      * These extensions are required for LMTP (RFC 2033 [5]).
      */
-    protected $_requiredExts = array(
+    protected $_requiredExts = [
         'ENHANCEDSTATUSCODES',
-        'PIPELINING'
-    );
+        'PIPELINING',
+    ];
 
     /**
      */
-    public function __construct(array $params = array())
+    public function __construct(array $params = [])
     {
         // LMTP MUST NOT be on port 25 (RFC 2033 [5]).
         if (isset($params['port']) && ($params['port'] == 25)) {
@@ -61,7 +62,7 @@ class Horde_Smtp_Lmtp extends Horde_Smtp
         /* RFC 2033 [4.2/4.3]: there is one response for each successful
          * recipient, so need to iterate through the array. If no successful
          * recipients found, throw an exception. */
-        $out = array();
+        $out = [];
         $success = false;
 
         foreach ($recipients as $val) {

@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2013-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2013-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -70,7 +71,7 @@
  */
 class Horde_Smtp implements Serializable
 {
-    const CHUNK_DEFAULT = 1048576;
+    public const CHUNK_DEFAULT = 1048576;
 
     /**
      * Connection to the SMTP server.
@@ -106,14 +107,14 @@ class Horde_Smtp implements Serializable
      *
      * @var array
      */
-    protected $_params = array();
+    protected $_params = [];
 
     /**
      * List of required ESMTP extensions.
      *
      * @var array
      */
-    protected $_requiredExts = array();
+    protected $_requiredExts = [];
 
     /**
      * Constructor.
@@ -157,17 +158,17 @@ class Horde_Smtp implements Serializable
      *                    mechanism (if available) with this token. Either a
      *                    string or a Horde_Smtp_Password object (since 1.1.0).
      */
-    public function __construct(array $params = array())
+    public function __construct(array $params = [])
     {
         // Default values.
-        $params = array_merge(array(
+        $params = array_merge([
             'chunk_size' => self::CHUNK_DEFAULT,
-            'context' => array(),
+            'context' => [],
             'host' => 'localhost',
             'port' => 587,
             'secure' => true,
-            'timeout' => 30
-        ), $params);
+            'timeout' => 30,
+        ], $params);
 
         foreach ($params as $key => $val) {
             $this->setParam($key, $val);
@@ -197,7 +198,7 @@ class Horde_Smtp implements Serializable
      */
     protected function _initOb()
     {
-        register_shutdown_function(array($this, 'shutdown'));
+        register_shutdown_function([$this, 'shutdown']);
         $this->_debug = ($debug = $this->getParam('debug'))
             ? new Horde_Smtp_Debug($debug)
             : new Horde_Support_Stub();
@@ -253,21 +254,21 @@ class Horde_Smtp implements Serializable
     public function __get($name)
     {
         switch ($name) {
-        case 'data_8bit':
-            // RFC 6152
-            return $this->queryExtension('8BITMIME');
+            case 'data_8bit':
+                // RFC 6152
+                return $this->queryExtension('8BITMIME');
 
-        case 'data_binary':
-            // RFC 3030
-            return $this->queryExtension('BINARYMIME');
+            case 'data_binary':
+                // RFC 3030
+                return $this->queryExtension('BINARYMIME');
 
-        case 'data_intl':
-            // RFC 6531
-            return $this->queryExtension('SMTPUTF8');
+            case 'data_intl':
+                // RFC 6531
+                return $this->queryExtension('SMTPUTF8');
 
-        case 'size':
-            // RFC 1870
-            return $this->queryExtension('SIZE') ?: null;
+            case 'size':
+                // RFC 1870
+                return $this->queryExtension('SIZE') ?: null;
         }
     }
 
@@ -282,29 +283,28 @@ class Horde_Smtp implements Serializable
     {
         /* Passwords may be stored encrypted. */
         switch ($key) {
-        case 'password':
-        case 'xoauth2_token':
-            if (isset($this->_params[$key]) &&
-                ($this->_params[$key] instanceof Horde_Smtp_Password)) {
-                return $this->_params[$key]->getPassword();
-            }
-
-            // DEPRECATED
-            if (($key == 'password') &&
-                !empty($this->_params['_passencrypt'])) {
-                try {
-                    $secret = new Horde_Secret();
-                    return $secret->read($this->_getEncryptKey(), $this->_params['password']);
-                } catch (Exception $e) {
-                    return null;
+            case 'password':
+            case 'xoauth2_token':
+                if (isset($this->_params[$key])
+                    && ($this->_params[$key] instanceof Horde_Smtp_Password)) {
+                    return $this->_params[$key]->getPassword();
                 }
-            }
-            break;
+
+                // DEPRECATED
+                if (($key == 'password')
+                    && !empty($this->_params['_passencrypt'])) {
+                    try {
+                        $secret = new Horde_Secret();
+                        return $secret->read($this->_getEncryptKey(), $this->_params['password']);
+                    } catch (Exception $e) {
+                        return null;
+                    }
+                }
+                break;
         }
 
-        return isset($this->_params[$key])
-            ? $this->_params[$key]
-            : null;
+        return $this->_params[$key]
+            ?? null;
     }
 
     /**
@@ -316,21 +316,22 @@ class Horde_Smtp implements Serializable
     public function setParam($key, $val)
     {
         switch ($key) {
-        case 'password':
-            if ($val instanceof Horde_Smtp_Password) {
-                break;
-            }
-
-            // Encrypt password. DEPRECATED
-            try {
-                $encrypt_key = $this->_getEncryptKey();
-                if (strlen($encrypt_key)) {
-                    $secret = new Horde_Secret();
-                    $val = $secret->write($encrypt_key, $val);
-                    $this->_params['_passencrypt'] = true;
+            case 'password':
+                if ($val instanceof Horde_Smtp_Password) {
+                    break;
                 }
-            } catch (Exception $e) {}
-            break;
+
+                // Encrypt password. DEPRECATED
+                try {
+                    $encrypt_key = $this->_getEncryptKey();
+                    if (strlen($encrypt_key)) {
+                        $secret = new Horde_Secret();
+                        $val = $secret->write($encrypt_key, $val);
+                        $this->_params['_passencrypt'] = true;
+                    }
+                } catch (Exception $e) {
+                }
+                break;
         }
 
         $this->_params[$key] = $val;
@@ -355,9 +356,8 @@ class Horde_Smtp implements Serializable
 
         $ext = Horde_String::upper($ext);
 
-        return isset($this->_extensions[$ext])
-            ? $this->_extensions[$ext]
-            : false;
+        return $this->_extensions[$ext]
+            ?? false;
     }
 
     /**
@@ -389,9 +389,9 @@ class Horde_Smtp implements Serializable
                     $this->getParam('timeout'),
                     $this->getParam('secure'),
                     $this->getParam('context'),
-                    array(
-                        'debug' => $this->_debug
-                    )
+                    [
+                        'debug' => $this->_debug,
+                    ]
                 );
             } catch (Horde\Socket\Client\Exception $e) {
                 $e2 = new Horde_Smtp_Exception(
@@ -409,9 +409,9 @@ class Horde_Smtp implements Serializable
             ));
 
             // Get initial line (RFC 5321 [3.1]).
-            $this->_getResponse(220, array(
-                'error' => 'logout'
-            ));
+            $this->_getResponse(220, [
+                'error' => 'logout',
+            ]);
         }
 
         $this->_hello();
@@ -437,13 +437,13 @@ class Horde_Smtp implements Serializable
 
         /* If we reached this point and don't have a secure connection, then
          * a secure connections is not available. */
-        if (!$this->isSecureConnection() &&
-            ($this->getParam('secure') === true)) {
+        if (!$this->isSecureConnection()
+            && ($this->getParam('secure') === true)) {
             $this->setParam('secure', false);
         }
 
-        if (!strlen($this->getParam('username')) ||
-            !($auth = $this->queryExtension('AUTH'))) {
+        if (!strlen($this->getParam('username'))
+            || !($auth = $this->queryExtension('AUTH'))) {
             return;
         }
 
@@ -453,7 +453,7 @@ class Horde_Smtp implements Serializable
         if (isset($auth['XOAUTH2'])) {
             unset($auth['XOAUTH2']);
             if ($this->getParam('xoauth2_token')) {
-                $auth = array('XOAUTH2' => true) + $auth;
+                $auth = ['XOAUTH2' => true] + $auth;
             }
         }
 
@@ -461,7 +461,8 @@ class Horde_Smtp implements Serializable
             try {
                 $this->_auth($method);
                 return;
-            } catch (Horde_Smtp_Exception $e) {}
+            } catch (Horde_Smtp_Exception $e) {
+            }
         }
 
         $this->logout();
@@ -481,7 +482,8 @@ class Horde_Smtp implements Serializable
                 // See RFC 5321 [4.1.1.10]
                 $this->_connection->write('QUIT');
                 $this->_getResponse(221);
-            } catch (Exception $e) {}
+            } catch (Exception $e) {
+            }
 
             $this->_connection->close();
         }
@@ -512,7 +514,7 @@ class Horde_Smtp implements Serializable
      * @throws Horde_Smtp_Exception_Recipients
      * @throws InvalidArgumentException
      */
-    public function send($from, $to, $data, array $opts = array())
+    public function send($from, $to, $data, array $opts = [])
     {
         $this->login();
 
@@ -552,7 +554,7 @@ class Horde_Smtp implements Serializable
         );
 
         stream_filter_register('horde_smtp_body', 'Horde_Smtp_Filter_Body');
-        $filter_body_params = new stdClass;
+        $filter_body_params = new stdClass();
         $filter_body = stream_filter_append(
             $stream,
             'horde_smtp_body',
@@ -594,15 +596,15 @@ class Horde_Smtp implements Serializable
             // RFC 3030[3]
             if (!$this->data_binary) {
                 switch ($filter_body_params->body) {
-                case 'binary':
-                    throw new InvalidArgumentException(
-                        'Server does not support binary message data.'
-                    );
+                    case 'binary':
+                        throw new InvalidArgumentException(
+                            'Server does not support binary message data.'
+                        );
 
-                default:
-                    throw new InvalidArgumentException(
-                        'Server does not support 8-bit message data.'
-                    );
+                    default:
+                        throw new InvalidArgumentException(
+                            'Server does not support 8-bit message data.'
+                        );
                 }
             }
 
@@ -641,14 +643,14 @@ class Horde_Smtp implements Serializable
             ? $to->bare_addresses
             : $to->bare_addresses_idn;
 
-        $recip_cmds = array();
+        $recip_cmds = [];
         foreach ($recipients as $val) {
             $recip_cmds[$val] = 'RCPT TO:<' . $val . '>';
         }
 
         if ($this->queryExtension('PIPELINING')) {
             $this->_connection->write(
-                array_merge(array($mailcmd), array_values($recip_cmds))
+                array_merge([$mailcmd], array_values($recip_cmds))
             );
 
             try {
@@ -660,9 +662,9 @@ class Horde_Smtp implements Serializable
 
             foreach ($recip_cmds as $key => $val) {
                 try {
-                    $this->_getResponse(array(250, 251), array(
-                        'exception' => 'Horde_Smtp_Exception_Recipients'
-                    ));
+                    $this->_getResponse([250, 251], [
+                        'exception' => 'Horde_Smtp_Exception_Recipients',
+                    ]);
                 } catch (Horde_Smtp_Exception_Recipients $e) {
                     if (is_null($error)) {
                         $error = $e;
@@ -682,17 +684,17 @@ class Horde_Smtp implements Serializable
             }
         } else {
             $this->_connection->write($mailcmd);
-            $this->_getResponse(250, array(
-                'error' => 'reset'
-            ));
+            $this->_getResponse(250, [
+                'error' => 'reset',
+            ]);
 
             foreach ($recip_cmds as $key => $val) {
                 $this->_connection->write($val);
                 try {
-                    $this->_getResponse(array(250, 251), array(
+                    $this->_getResponse([250, 251], [
                         'error' => 'reset',
-                        'exception' => 'Horde_Smtp_Exception_Recipients'
-                    ));
+                        'exception' => 'Horde_Smtp_Exception_Recipients',
+                    ]);
                 } catch (Horde_Smtp_Exception_Recipients $e) {
                     $e->recipients[] = $key;
                     throw $e;
@@ -701,9 +703,9 @@ class Horde_Smtp implements Serializable
         }
 
         /* CHUNKING support. RFC 3030[2] */
-        if ($chunking &&
-            $chunk_size &&
-            ($chunk_force || ($size > $chunk_size))) {
+        if ($chunking
+            && $chunk_size
+            && ($chunk_force || ($size > $chunk_size))) {
             while ($size) {
                 $c = min($chunk_size, $size);
                 $size -= $c;
@@ -713,32 +715,32 @@ class Horde_Smtp implements Serializable
                 );
                 $this->_connection->write($stream, $c);
                 if ($size) {
-                    $this->_getResponse(250, array(
-                        'error' => 'reset'
-                    ));
+                    $this->_getResponse(250, [
+                        'error' => 'reset',
+                    ]);
                 }
             }
         } else {
             $this->_connection->write('DATA');
 
             try {
-                $this->_getResponse(354, array(
-                    'error' => 'reset'
-                ));
+                $this->_getResponse(354, [
+                    'error' => 'reset',
+                ]);
             } catch (Horde_Smtp_Exception $e) {
                 fclose($stream);
 
                 /* This is the place where a STARTTLS 530 error would occur.
                  * If so, explicitly use STARTTLS and try again. */
                 switch ($e->getSmtpCode()) {
-                case 530:
-                    if (!$this->isSecureConnection()) {
-                        $this->logout();
-                        $this->setParam('secure', 'tls');
-                        $this->send($from, $to, $data, $opts);
-                        return;
-                    }
-                    break;
+                    case 530:
+                        if (!$this->isSecureConnection()) {
+                            $this->logout();
+                            $this->setParam('secure', 'tls');
+                            $this->send($from, $to, $data, $opts);
+                            return;
+                        }
+                        break;
                 }
 
                 throw $e;
@@ -810,7 +812,7 @@ class Horde_Smtp implements Serializable
         }
 
         $this->_connection->write('ETRN ' . $host);
-        $this->_getResponse(array(250, 251, 252, 253));
+        $this->_getResponse([250, 251, 252, 253]);
     }
 
     /* Internal methods. */
@@ -840,21 +842,21 @@ class Horde_Smtp implements Serializable
             }
         } catch (Horde_Smtp_Exception $e) {
             switch ($e->getSmtpCode()) {
-            case 502:
-                // Old server - doesn't support EHLO
-                $this->_connection->write('HELO ' . $host);
-                try {
-                    $this->_getResponse(250);
-                } catch (Horde_Smtp_Exception $e2) {
+                case 502:
+                    // Old server - doesn't support EHLO
+                    $this->_connection->write('HELO ' . $host);
+                    try {
+                        $this->_getResponse(250);
+                    } catch (Horde_Smtp_Exception $e2) {
+                        $this->logout();
+                        throw $e;
+                    }
+                    $this->_extensions = [];
+                    break;
+
+                default:
                     $this->logout();
                     throw $e;
-                }
-                $this->_extensions = array();
-                break;
-
-            default:
-                $this->logout();
-                throw $e;
             }
         }
     }
@@ -870,8 +872,8 @@ class Horde_Smtp implements Serializable
     {
         $secure = $this->getParam('secure');
 
-        if ($this->isSecureConnection() ||
-            (($secure !== true) && ($secure !== 'tls'))) {
+        if ($this->isSecureConnection()
+            || (($secure !== true) && ($secure !== 'tls'))) {
             return false;
         }
 
@@ -887,9 +889,9 @@ class Horde_Smtp implements Serializable
         }
 
         $this->_connection->write('STARTTLS');
-        $this->_getResponse(220, array(
-            'error' => 'logout'
-        ));
+        $this->_getResponse(220, [
+            'error' => 'logout',
+        ]);
 
         if (!$this->_connection->startTls()) {
             $this->logout();
@@ -920,98 +922,98 @@ class Horde_Smtp implements Serializable
         $debug = sprintf("[AUTH Command - method: %s; username: %s]\n", $method, $user);
 
         switch ($method) {
-        case 'CRAM-MD5':
-        case 'CRAM-SHA1':
-        case 'CRAM-SHA256':
-            // RFC 2195: CRAM-MD5
-            // CRAM-SHA1 & CRAM-SHA256 supported by Courier SASL library
-            $this->_connection->write('AUTH ' . $method);
-            $resp = $this->_getResponse(334);
+            case 'CRAM-MD5':
+            case 'CRAM-SHA1':
+            case 'CRAM-SHA256':
+                // RFC 2195: CRAM-MD5
+                // CRAM-SHA1 & CRAM-SHA256 supported by Courier SASL library
+                $this->_connection->write('AUTH ' . $method);
+                $resp = $this->_getResponse(334);
 
-            $this->_debug->active = false;
-            $this->_connection->write(
-                base64_encode($user . ' ' . hash_hmac(Horde_String::lower(substr($method, 5)), base64_decode(reset($resp)), $pass, false))
-            );
-            $this->_debug->active = true;
+                $this->_debug->active = false;
+                $this->_connection->write(
+                    base64_encode($user . ' ' . hash_hmac(Horde_String::lower(substr($method, 5)), base64_decode(reset($resp)), $pass, false))
+                );
+                $this->_debug->active = true;
 
-            $this->_debug->raw($debug);
-            break;
+                $this->_debug->raw($debug);
+                break;
 
-        case 'DIGEST-MD5':
-            // RFC 2831/4422; obsoleted by RFC 6331
-            // Since this is obsolete, will only attempt if
-            // Horde_Imap_Client is also present on the system.
-            if (!class_exists('Horde_Imap_Client_Auth_DigestMD5')) {
-                throw new Horde_Smtp_Exception('DIGEST-MD5 not supported');
-            }
+            case 'DIGEST-MD5':
+                // RFC 2831/4422; obsoleted by RFC 6331
+                // Since this is obsolete, will only attempt if
+                // Horde_Imap_Client is also present on the system.
+                if (!class_exists('Horde_Imap_Client_Auth_DigestMD5')) {
+                    throw new Horde_Smtp_Exception('DIGEST-MD5 not supported');
+                }
 
-            $this->_connection->write('AUTH ' . $method);
-            $resp = $this->_getResponse(334);
+                $this->_connection->write('AUTH ' . $method);
+                $resp = $this->_getResponse(334);
 
-            $this->_debug->active = false;
-            $this->_connection->write(
-                base64_encode(new Horde_Imap_Client_Auth_DigestMD5(
+                $this->_debug->active = false;
+                $this->_connection->write(
+                    base64_encode(new Horde_Imap_Client_Auth_DigestMD5(
+                        $user,
+                        $pass,
+                        base64_decode(reset($resp)),
+                        $this->getParam('hostspec'),
+                        'smtp'
+                    ))
+                );
+                $this->_debug->active = true;
+                $this->_debug->raw($debug);
+
+                $this->_getResponse(334);
+                $this->_connection->write('');
+                break;
+
+            case 'LOGIN':
+                $this->_connection->write('AUTH ' . $method);
+                $this->_getResponse(334);
+                $this->_connection->write(base64_encode($user));
+                $this->_getResponse(334);
+                $this->_debug->active = false;
+                $this->_connection->write(base64_encode($pass));
+                $this->_debug->active = true;
+                $this->_debug->raw($debug);
+                break;
+
+            case 'PLAIN':
+                // RFC 2595/4616 - PLAIN SASL mechanism
+                $auth = base64_encode(implode("\0", [
+                    $user,
                     $user,
                     $pass,
-                    base64_decode(reset($resp)),
-                    $this->getParam('hostspec'),
-                    'smtp'
-                ))
-            );
-            $this->_debug->active = true;
-            $this->_debug->raw($debug);
+                ]));
+                $this->_debug->active = false;
+                $this->_connection->write('AUTH ' . $method . ' ' . $auth);
+                $this->_debug->active = true;
+                $this->_debug->raw($debug);
+                break;
 
-            $this->_getResponse(334);
-            $this->_connection->write('');
-            break;
+            case 'XOAUTH2':
+                // Google XOAUTH2
+                $this->_debug->active = false;
+                $this->_connection->write(
+                    'AUTH ' . $method . ' ' . $this->getParam('xoauth2_token')
+                );
+                $this->_debug->active = true;
+                $this->_debug->raw($debug);
 
-        case 'LOGIN':
-            $this->_connection->write('AUTH ' . $method);
-            $this->_getResponse(334);
-            $this->_connection->write(base64_encode($user));
-            $this->_getResponse(334);
-            $this->_debug->active = false;
-            $this->_connection->write(base64_encode($pass));
-            $this->_debug->active = true;
-            $this->_debug->raw($debug);
-            break;
-
-        case 'PLAIN':
-            // RFC 2595/4616 - PLAIN SASL mechanism
-            $auth = base64_encode(implode("\0", array(
-                $user,
-                $user,
-                $pass
-            )));
-            $this->_debug->active = false;
-            $this->_connection->write('AUTH ' . $method . ' ' . $auth);
-            $this->_debug->active = true;
-            $this->_debug->raw($debug);
-            break;
-
-        case 'XOAUTH2':
-            // Google XOAUTH2
-            $this->_debug->active = false;
-            $this->_connection->write(
-                'AUTH ' . $method . ' ' . $this->getParam('xoauth2_token')
-            );
-            $this->_debug->active = true;
-            $this->_debug->raw($debug);
-
-            try {
-                $this->_getResponse(235);
-                return;
-            } catch (Horde_Smtp_Exception $e) {
-                switch ($e->getSmtpCode()) {
-                case 334:
-                    $this->_connection->write('');
-                    break;
+                try {
+                    $this->_getResponse(235);
+                    return;
+                } catch (Horde_Smtp_Exception $e) {
+                    switch ($e->getSmtpCode()) {
+                        case 334:
+                            $this->_connection->write('');
+                            break;
+                    }
                 }
-            }
-            break;
+                break;
 
-        default:
-            throw new Horde_Smtp_Exception(sprintf('Authentication method %s not supported', $method));
+            default:
+                throw new Horde_Smtp_Exception(sprintf('Authentication method %s not supported', $method));
         }
 
         $this->_getResponse(235);
@@ -1030,14 +1032,14 @@ class Horde_Smtp implements Serializable
      * @return array  An array with the response text.
      * @throws Horde_Smtp_Exception
      */
-    protected function _getResponse($code, array $opts = array())
+    protected function _getResponse($code, array $opts = [])
     {
-        $opts = array_merge(array(
+        $opts = array_merge([
             'error' => null,
-            'exception' => 'Horde_Smtp_Exception'
-        ), $opts);
+            'exception' => 'Horde_Smtp_Exception',
+        ], $opts);
 
-        $text = array();
+        $text = [];
 
         while ($read = $this->_connection->read()) {
             $read = trim(rtrim($read, "\r\n"));
@@ -1049,7 +1051,7 @@ class Horde_Smtp implements Serializable
         }
 
         if (!is_array($code)) {
-            $code = array($code);
+            $code = [$code];
         }
 
         if (in_array($replycode, $code)) {
@@ -1058,9 +1060,9 @@ class Horde_Smtp implements Serializable
 
         /* Check for enhanced status codes (RFC 2034). */
         $details = reset($text);
-        if (!is_null($this->_extensions) &&
-            $this->queryExtension('ENHANCEDSTATUSCODES')) {
-            list($enhanced, $details) = explode(' ', $details, 2);
+        if (!is_null($this->_extensions)
+            && $this->queryExtension('ENHANCEDSTATUSCODES')) {
+            [$enhanced, $details] = explode(' ', $details, 2);
             if (!strpos($enhanced, '.')) {
                 $details = $enhanced . ' ' . $details;
                 $enhanced = null;
@@ -1077,16 +1079,16 @@ class Horde_Smtp implements Serializable
         }
 
         switch ($opts['error']) {
-        case 'logout':
-            $this->logout();
-            break;
+            case 'logout':
+                $this->logout();
+                break;
 
-        case 'reset':
-            /* RFC 3207: If we see 530, no need to send reset command. */
-            if ($code != 530) {
-                $this->resetCmd();
-            }
-            break;
+            case 'reset':
+                /* RFC 3207: If we see 530, no need to send reset command. */
+                if ($code != 530) {
+                    $this->resetCmd();
+                }
+                break;
         }
 
         throw $e;
@@ -1104,9 +1106,9 @@ class Horde_Smtp implements Serializable
      */
     protected function _processData($recipients)
     {
-        $this->_getResponse(250, array(
-            'error' => 'reset'
-        ));
+        $this->_getResponse(250, [
+            'error' => 'reset',
+        ]);
         return array_fill_keys($recipients, true);
     }
 

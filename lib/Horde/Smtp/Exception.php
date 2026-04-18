@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2013-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2013-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -30,42 +31,42 @@ class Horde_Smtp_Exception extends Horde_Exception
     /* Error message codes. */
 
     // Unspecified error (default)
-    const UNSPECIFIED = 0;
+    public const UNSPECIFIED = 0;
 
     // Thrown if server denies the network connection.
-    const SERVER_CONNECT = 1;
+    public const SERVER_CONNECT = 1;
 
     // Thrown if read error for server response.
-    const SERVER_READERROR = 2;
+    public const SERVER_READERROR = 2;
 
     // Thrown if write error in server interaction.
-    const SERVER_WRITEERROR = 3;
+    public const SERVER_WRITEERROR = 3;
 
     // The server ended the connection.
-    const DISCONNECT = 4;
+    public const DISCONNECT = 4;
 
     // Mailbox unavailable.
-    const MAILBOX_UNAVAILABLE = 5;
+    public const MAILBOX_UNAVAILABLE = 5;
 
     // Insufficient system storage.
-    const INSUFFICIENT_STORAGE = 6;
+    public const INSUFFICIENT_STORAGE = 6;
 
     // Unknown local user.
-    const UNKNOWN_LOCAL_USER = 7;
+    public const UNKNOWN_LOCAL_USER = 7;
 
     // User has exceeded storage allocation.
-    const OVERQUOTA = 8;
+    public const OVERQUOTA = 8;
 
     // "Syntax errors, syntactically correct commands that do not fit any
     // functional category, and unimplemented or superfluous commands."
     // (@since 1.7.0)
-    const CATEGORY_SYNTAX = 201;
+    public const CATEGORY_SYNTAX = 201;
 
     // "Replies to requests for information" (@since 1.7.0)
-    const CATEGORY_INFORMATIONAL = 202;
+    public const CATEGORY_INFORMATIONAL = 202;
 
     // "Replies referring to the transmission channel" (@since 1.7.0)
-    const CATEGORY_CONNECTIONS = 203;
+    public const CATEGORY_CONNECTIONS = 203;
 
     // "Status of the receiver mail system vis-a-vis the requested transfer or
     // other mail system action."
@@ -73,51 +74,51 @@ class Horde_Smtp_Exception extends Horde_Exception
     // destination system has caused this DSN. System issues are assumed to be
     // under the general control of the destination system administrator."
     // (@since 1.7.0)
-    const CATEGORY_MAILSYSTEM = 204;
+    public const CATEGORY_MAILSYSTEM = 204;
 
     // "Reports on the originator or destination address. It may include
     // address syntax or validity." (@since 1.7.0)
-    const CATEGORY_ADDRESS = 205;
+    public const CATEGORY_ADDRESS = 205;
 
     // "Mailbox status indicates that something having to do with the mailbox
     // has caused this DSN." (@since 1.7.0)
-    const CATEGORY_MAILBOX = 206;
+    public const CATEGORY_MAILBOX = 206;
 
     // "Status about the delivery system itself. These system components
     // include any necessary infrastructure such as directory and routing
     // services." (@since 1.7.0)
-    const CATEGORY_NETWORK = 207;
+    public const CATEGORY_NETWORK = 207;
 
     // "The mail delivery protocol status codes report failures involving the
     // message delivery protocol. These failures include the full range of
     // problems resulting from implementation errors or an unreliable
     // connection." (@since 1.7.0)
-    const CATEGORY_DELIVERY = 208;
+    public const CATEGORY_DELIVERY = 208;
 
     // "Failures involving the content of the message. These codes report
     // failures due to translation, transcoding, or otherwise unsupported
     // message media." (@since 1.7.0)
-    const CATEGORY_CONTENT = 209;
+    public const CATEGORY_CONTENT = 209;
 
     // "Failures involving policies such as per-recipient or per-host
     // filtering and cryptographic operations." (@since 1.7.0)
-    const CATEGORY_SECURITY = 210;
+    public const CATEGORY_SECURITY = 210;
 
 
     /* Login failures codes. */
 
     // Could not start mandatory TLS connection.
-    const LOGIN_TLSFAILURE = 100;
+    public const LOGIN_TLSFAILURE = 100;
 
     // Generic authentication failure.
-    const LOGIN_AUTHENTICATIONFAILED = 101;
+    public const LOGIN_AUTHENTICATIONFAILED = 101;
 
     // Requires authentication.
-    const LOGIN_REQUIREAUTHENTICATION = 102;
+    public const LOGIN_REQUIREAUTHENTICATION = 102;
 
     // Server does not support necessary extension(s).
     // @since 1.5.0
-    const LOGIN_MISSINGEXTENSION = 103;
+    public const LOGIN_MISSINGEXTENSION = 103;
 
 
     /**
@@ -162,18 +163,18 @@ class Horde_Smtp_Exception extends Horde_Exception
     public function __get($name)
     {
         switch ($name) {
-        case 'permanent':
-            $str_code = is_null($this->_enhancedcode)
-                ? strval($this->_smtpcode)
-                : explode('.', $this->_enhancedcode);
-            /* Enhanced codes: Permanent errors are 5.y.z codes. (4.y.z are
-             * tranisent errors)
-             * Status code: permanent errors are 5yz codes. (4yz are tranisent
-             * errors) */
-            return ($str_code[0] === '5');
+            case 'permanent':
+                $str_code = is_null($this->_enhancedcode)
+                    ? strval($this->_smtpcode)
+                    : explode('.', $this->_enhancedcode);
+                /* Enhanced codes: Permanent errors are 5.y.z codes. (4.y.z are
+                 * tranisent errors)
+                 * Status code: permanent errors are 5yz codes. (4yz are tranisent
+                 * errors) */
+                return ($str_code[0] === '5');
 
-        case 'raw_msg':
-            return $this->_rawmsg;
+            case 'raw_msg':
+                return $this->_rawmsg;
         }
     }
 
@@ -194,63 +195,63 @@ class Horde_Smtp_Exception extends Horde_Exception
          * declared final in the parent class and we can not alter on-demand
          * at that location (darn). */
         switch ($smtpcode) {
-        case 450:
-            $this->code = self::MAILBOX_UNAVAILABLE;
-            $this->message = Horde_Smtp_Translation::t("Mailbox unavailable.");
+            case 450:
+                $this->code = self::MAILBOX_UNAVAILABLE;
+                $this->message = Horde_Smtp_Translation::t("Mailbox unavailable.");
 
-            return;
+                return;
 
-        case 452:
-            $this->code = self::INSUFFICIENT_STORAGE;
-            $this->message = Horde_Smtp_Translation::t("Insufficient system storage.");
-            return;
+            case 452:
+                $this->code = self::INSUFFICIENT_STORAGE;
+                $this->message = Horde_Smtp_Translation::t("Insufficient system storage.");
+                return;
 
-        case 454:
-            $this->code = self::LOGIN_TLSFAILURE;
-            $this->message = Horde_Smtp_Translation::t("Could not open secure TLS connection to the server.");
-            return;
+            case 454:
+                $this->code = self::LOGIN_TLSFAILURE;
+                $this->message = Horde_Smtp_Translation::t("Could not open secure TLS connection to the server.");
+                return;
 
-        case 530:
-            $this->code = self::LOGIN_REQUIREAUTHENTICATION;
-            $this->message = Horde_Smtp_Translation::t("Server requires authentication.");
-            return;
+            case 530:
+                $this->code = self::LOGIN_REQUIREAUTHENTICATION;
+                $this->message = Horde_Smtp_Translation::t("Server requires authentication.");
+                return;
 
-        case 550:
-            $this->code = self::MAILBOX_UNAVAILABLE;
-            $this->message = Horde_Smtp_Translation::t("Message could not be delivered - the address was not found, is unknown, or is not receiving messages.");
-            return;
+            case 550:
+                $this->code = self::MAILBOX_UNAVAILABLE;
+                $this->message = Horde_Smtp_Translation::t("Message could not be delivered - the address was not found, is unknown, or is not receiving messages.");
+                return;
 
-        case 551:
-            $this->code = self::UNKNOWN_LOCAL_USER;
-            return;
+            case 551:
+                $this->code = self::UNKNOWN_LOCAL_USER;
+                return;
 
-        case 552:
-            $this->code = self::OVERQUOTA;
-            return;
+            case 552:
+                $this->code = self::OVERQUOTA;
+                return;
 
-        case 554:
-            $this->code = self::DISCONNECT;
-            $this->message = Horde_Smtp_Translation::t("Server is not accepting SMTP connections.");
-            return;
+            case 554:
+                $this->code = self::DISCONNECT;
+                $this->message = Horde_Smtp_Translation::t("Server is not accepting SMTP connections.");
+                return;
         }
 
         $str_code = strval($smtpcode);
         switch ($str_code[1]) {
-        case '0':
-            $this->code = self::CATEGORY_SYNTAX;
-            break;
+            case '0':
+                $this->code = self::CATEGORY_SYNTAX;
+                break;
 
-        case '1':
-            $this->code = self::CATEGORY_INFORMATIONAL;
-            break;
+            case '1':
+                $this->code = self::CATEGORY_INFORMATIONAL;
+                break;
 
-        case '2':
-            $this->code = self::CATEGORY_CONNECTIONS;
-            break;
+            case '2':
+                $this->code = self::CATEGORY_CONNECTIONS;
+                break;
 
-        case '5':
-            $this->code = self::CATEGORY_MAILSYSTEM;
-            break;
+            case '5':
+                $this->code = self::CATEGORY_MAILSYSTEM;
+                break;
         }
     }
 
@@ -280,33 +281,33 @@ class Horde_Smtp_Exception extends Horde_Exception
 
         $parts = explode('.', $code);
         switch ($parts[1]) {
-        case '1':
-            $this->code = self::CATEGORY_ADDRESS;
-            break;
+            case '1':
+                $this->code = self::CATEGORY_ADDRESS;
+                break;
 
-        case '2':
-            $this->code = self::CATEGORY_MAILBOX;
-            break;
+            case '2':
+                $this->code = self::CATEGORY_MAILBOX;
+                break;
 
-        case '3':
-            $this->code = self::CATEGORY_MAILSYSTEM;
-            break;
+            case '3':
+                $this->code = self::CATEGORY_MAILSYSTEM;
+                break;
 
-        case '4':
-            $this->code = self::CATEGORY_NETWORK;
-            break;
+            case '4':
+                $this->code = self::CATEGORY_NETWORK;
+                break;
 
-        case '5':
-            $this->code = self::CATEGORY_DELIVERY;
-            break;
+            case '5':
+                $this->code = self::CATEGORY_DELIVERY;
+                break;
 
-        case '6':
-            $this->code = self::CATEGORY_CONTENT;
-            break;
+            case '6':
+                $this->code = self::CATEGORY_CONTENT;
+                break;
 
-        case '7':
-            $this->code = self::CATEGORY_SECURITY;
-            break;
+            case '7':
+                $this->code = self::CATEGORY_SECURITY;
+                break;
         }
     }
 

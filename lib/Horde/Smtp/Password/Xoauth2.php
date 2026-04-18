@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2013-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2013-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -62,8 +63,8 @@ class Horde_Smtp_Password_Xoauth2 implements Horde_Smtp_Password
         // base64("user=" {User} "^Aauth=Bearer " {Access Token} "^A^A")
         // ^A represents a Control+A (\001)
         return base64_encode(
-            'user=' . $this->username . "\1" .
-            'auth=Bearer ' . $this->access_token . "\1\1"
+            'user=' . $this->username . "\1"
+            . 'auth=Bearer ' . $this->access_token . "\1\1"
         );
     }
 

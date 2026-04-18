@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2013-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2013-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -11,7 +12,9 @@
  * @package    Smtp
  * @subpackage UnitTests
  */
+
 namespace Horde\Smtp;
+
 use Horde_Test_Case;
 
 /**
@@ -24,10 +27,11 @@ use Horde_Test_Case;
  * @license    http://www.horde.org/licenses/lgpl21 LGPL 2.1
  * @package    Smtp
  * @subpackage UnitTests
+ * @coversNothing
  */
 class FilterDataTest extends Horde_Test_Case
 {
-    const FILTER_ID = 'horde_smtp_data';
+    public const FILTER_ID = 'horde_smtp_data';
 
     public function setUp(): void
     {
@@ -53,28 +57,28 @@ class FilterDataTest extends Horde_Test_Case
 
     public function escapeProvider()
     {
-        return array(
-            array(
+        return [
+            [
                 "Foo\nBar",
-                "Foo\r\nBar"
-            ),
-            array(
-                "Foo\rBar",
-                "Foo\r\nBar"
-            ),
-            array(
                 "Foo\r\nBar",
-                "Foo\r\nBar"
-            ),
-            array(
+            ],
+            [
+                "Foo\rBar",
+                "Foo\r\nBar",
+            ],
+            [
+                "Foo\r\nBar",
+                "Foo\r\nBar",
+            ],
+            [
                 "Foo\r\n.\r\nBar\r\n",
-                "Foo\r\n..\r\nBar\r\n"
-            ),
-            array(
+                "Foo\r\n..\r\nBar\r\n",
+            ],
+            [
                 "Foo\r.\r\n\n .Foo\n\r\nBaz",
-                "Foo\r\n..\r\n\r\n .Foo\r\n\r\nBaz"
-            )
-        );
+                "Foo\r\n..\r\n\r\n .Foo\r\n\r\nBaz",
+            ],
+        ];
     }
 
 }
