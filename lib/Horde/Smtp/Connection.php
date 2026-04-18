@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2013-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2013-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -71,7 +72,7 @@ class Horde_Smtp_Connection extends Horde\Socket\Client
             $this->_params['debug']->raw("\n");
         } else {
             if (!is_array($data)) {
-                $data = array($data);
+                $data = [$data];
             }
 
             foreach ($data as $val) {

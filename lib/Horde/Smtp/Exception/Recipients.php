@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2014-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2014-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -22,14 +23,13 @@
  * @package   Smtp
  * @since     1.8.0
  */
-class Horde_Smtp_Exception_Recipients
-extends Horde_Smtp_Exception
+class Horde_Smtp_Exception_Recipients extends Horde_Smtp_Exception
 {
     /**
      * Failed recipient list.
      *
      * @var array
      */
-    public $recipients = array();
+    public $recipients = [];
 
 }

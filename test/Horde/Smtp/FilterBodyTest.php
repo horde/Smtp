@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2014-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2014-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -11,7 +12,9 @@
  * @package    Smtp
  * @subpackage UnitTests
  */
+
 namespace Horde\Smtp;
+
 use Horde_Test_Case;
 use stdClass;
 
@@ -25,6 +28,7 @@ use stdClass;
  * @license    http://www.horde.org/licenses/lgpl21 LGPL 2.1
  * @package    Smtp
  * @subpackage UnitTests
+ * @coversNothing
  */
 class FilterBodyTest extends Horde_Test_Case
 {
@@ -33,7 +37,7 @@ class FilterBodyTest extends Horde_Test_Case
      */
     public function testBodyFilter($data, $result)
     {
-        $params = new stdClass;
+        $params = new stdClass();
 
         $stream = fopen('php://temp', 'r+');
         stream_filter_register('horde_smtp_body', 'Horde_Smtp_Filter_Body');
@@ -55,32 +59,32 @@ class FilterBodyTest extends Horde_Test_Case
 
     public function bodyFilterProvider()
     {
-        return array(
-            array(
+        return [
+            [
                 "This is 7-bit\r\ndata.",
-                false
-            ),
-            array(
+                false,
+            ],
+            [
                 str_repeat('A', 900) . "This is also 7-bit\r\ndata.",
-                false
-            ),
-            array(
+                false,
+            ],
+            [
                 "This is 8-bit åå\r\ndata.",
-                '8bit'
-            ),
-            array(
+                '8bit',
+            ],
+            [
                 str_repeat('A', 900) . "This is also 8-bit åå\r\ndata.",
-                '8bit'
-            ),
-            array(
+                '8bit',
+            ],
+            [
                 "This is binary \0\r\ndata.",
-                'binary'
-            ),
-            array(
+                'binary',
+            ],
+            [
                 str_repeat('A', 1500) . "This is also binary åå\r\ndata.",
-                'binary'
-            )
-        );
+                'binary',
+            ],
+        ];
     }
 
 }

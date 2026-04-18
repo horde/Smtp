@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2013-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2013-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -45,15 +46,15 @@ class Horde_Smtp_Filter_Data extends php_user_filter
 
             // If the first character is '.', need to check if it has to be
             // doubled.
-            if (($bucket->data[0] === '.') &&
-                (is_null($this->_last) || ($this->_last === "\n"))) {
+            if (($bucket->data[0] === '.')
+                && (is_null($this->_last) || ($this->_last === "\n"))) {
                 $bucket->data = '.' . $bucket->data;
             }
 
             // EOLs need to be CRLF; double leading periods.
             $bucket->data = str_replace(
-                array("\r\n", "\r", "\n", "\n."),
-                array("\n", "\n", "\r\n", "\n.."),
+                ["\r\n", "\r", "\n", "\n."],
+                ["\n", "\n", "\r\n", "\n.."],
                 $bucket->data
             );
 

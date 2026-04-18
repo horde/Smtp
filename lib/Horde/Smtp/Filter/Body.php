@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2014-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2014-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -58,29 +59,29 @@ class Horde_Smtp_Filter_Body extends php_user_filter
                     $chr = ord($str[$i]);
 
                     switch ($chr) {
-                    case 0:
-                        /* Only binary data can have NULLs. */
-                        $this->params->body = 'binary';
-                        $skip = true;
-                        break 2;
-
-                    case 10: // LF
-                    case 13: // CR
-                        $this->_crlf = 0;
-                        break;
-
-                    default:
-                        /* RFC 2045 [2.8]: 8bit data must be less than 998
-                         * characters in length. Otherwise, we are looking at
-                         * binary. */
-                        if (++$this->_crlf > 998) {
+                        case 0:
+                            /* Only binary data can have NULLs. */
                             $this->params->body = 'binary';
                             $skip = true;
                             break 2;
-                        } else if ($chr > 127) {
-                            $this->params->body = '8bit';
-                        }
-                        break;
+
+                        case 10: // LF
+                        case 13: // CR
+                            $this->_crlf = 0;
+                            break;
+
+                        default:
+                            /* RFC 2045 [2.8]: 8bit data must be less than 998
+                             * characters in length. Otherwise, we are looking at
+                             * binary. */
+                            if (++$this->_crlf > 998) {
+                                $this->params->body = 'binary';
+                                $skip = true;
+                                break 2;
+                            } elseif ($chr > 127) {
+                                $this->params->body = '8bit';
+                            }
+                            break;
                     }
                 }
             }
