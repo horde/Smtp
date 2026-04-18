@@ -28,7 +28,7 @@ final class TcpSmtpConnection implements SmtpConnection
 {
     public function __construct(
         private readonly ClientInterface $client,
-        private readonly DebugInterface $debug,
+        private readonly Debug $debug,
     ) {}
 
     public function write(string|array $data): void

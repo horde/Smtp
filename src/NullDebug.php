@@ -16,7 +16,7 @@ namespace Horde\Smtp;
 /**
  * No-op debug implementation. Replaces the Horde_Support_Stub usage.
  */
-final class NullDebug implements DebugInterface
+final class NullDebug implements Debug
 {
     public function client(string $msg, bool $eol = true): void {}
 
