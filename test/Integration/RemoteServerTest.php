@@ -7,6 +7,9 @@ namespace Horde\Smtp\Test\Integration;
 use Horde_Smtp;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @coversNothing
+ */
 class RemoteServerTest extends TestCase
 {
     private ?array $config = null;
