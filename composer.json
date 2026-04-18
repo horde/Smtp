@@ -1,10 +1,15 @@
 {
     "name": "horde/smtp",
-    "description": "SMTP client library",
+    "description": "SMTP and LMTP client library",
     "type": "library",
     "homepage": "https://www.horde.org",
     "license": "LGPL-2.1-only",
     "authors": [
+        {
+            "name": "Ralf Lang",
+            "email": "ralf.lang@ralf-lang.de",
+            "role": "maintainer"
+        },
         {
             "name": "Michael Slusarz",
             "email": "slusarz@horde.org",
@@ -14,19 +19,23 @@
     "keywords": [
         "mail",
         "client",
-        "rfc5321"
+        "rfc5321",
+        "rfc2033"
     ],
-    "time": "2026-04-17",
+    "time": "2026-04-19",
     "repositories": [],
+    "minimum-stability": "dev",
     "require": {
         "php": "^8.1",
+        "horde/eventdispatcher": "^1",
         "horde/exception": "^3",
         "horde/mail": "^3",
-        "horde/socket_client": "^3.0@dev",
+        "horde/socket_client": "^3",
         "horde/support": "^3",
         "horde/translation": "^3",
         "horde/util": "^3"
     },
+    "require-dev": {},
     "suggest": {
         "horde/imap_client": "^3",
         "horde/secret": "^3",
@@ -47,11 +56,5 @@
     },
     "config": {
         "allow-plugins": {}
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-FRAMEWORK_6_0": "2.x-dev"
-        }
-    },
-    "minimum-stability": "dev"
+    }
 }
