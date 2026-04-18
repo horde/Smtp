@@ -34,6 +34,7 @@ class Horde_Smtp_Filter_Data extends php_user_filter
     /**
      * @see stream_filter_register()
      */
+    #[\ReturnTypeWillChange]
     public function filter($in, $out, &$consumed, $closing)
     {
         while ($bucket = stream_bucket_make_writeable($in)) {

@@ -151,11 +151,11 @@ class Horde_Smtp_Exception extends Horde_Exception
     public function __construct($message = null, $code = null)
     {
         parent::__construct(
-            Horde_Smtp_Translation::t($message),
-            $code
+            Horde_Smtp_Translation::t($message ?? ''),
+            $code ?? 0
         );
 
-        $this->_rawmsg = $message;
+        $this->_rawmsg = $message ?? '';
     }
 
     /**
