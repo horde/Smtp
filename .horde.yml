@@ -1,11 +1,16 @@
 ---
 id: Smtp
 name: Smtp
-full: SMTP client library
-description: A library for connecting to a SMTP (RFC 5321) server to send e-mail messages.
+full: SMTP and LMTP client library
+description: A library for connecting to a SMTP (RFC 5321) server to send e-mail messages. Also supports LMTP.
 list: dev
 type: library
 authors:
+  - 
+    name: Ralf Lang
+    user: rlang
+    email: ralf.lang@ralf-lang.de
+    role: maintainer
   -
     name: Michael Slusarz
     user: slusarz
@@ -40,4 +45,9 @@ keywords:
   - mail
   - client
   - rfc5321
+  - rfc2033
 vendor: horde
+
+quality:
+  phpstan:
+    level: 3
