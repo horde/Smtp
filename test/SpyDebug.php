@@ -11,12 +11,12 @@ declare(strict_types=1);
 
 namespace Horde\Smtp\Test;
 
-use Horde\Smtp\DebugInterface;
+use Horde\Smtp\Debug;
 
 /**
  * Captures debug output for test assertions.
  */
-class SpyDebug implements DebugInterface
+class SpyDebug implements Debug
 {
     /** @var string[] */
     public array $messages = [];

@@ -6,6 +6,7 @@ namespace Horde\Smtp\Test\Unit;
 
 use Horde\Smtp\AuthenticationException;
 use Horde\Smtp\ConnectionException;
+use Horde\Smtp\DefaultSendDataStrategy;
 use Horde\Smtp\NullDebug;
 use Horde\Smtp\PasswordCredentials;
 use Horde\Smtp\PlainAuthenticator;
@@ -14,7 +15,9 @@ use Horde\Smtp\SendResult;
 use Horde\Smtp\ServerCapabilities;
 use Horde\Smtp\SmtpClient;
 use Horde\Smtp\SmtpConfig;
+use Horde\Smtp\SmtpException;
 use Horde\Smtp\SmtpResponse;
+use Horde\Smtp\TlsSendDataStrategy;
 use Horde\Smtp\Test\FakeSmtpConnection;
 use Horde\Smtp\Xoauth2Authenticator;
 use Horde\Smtp\Xoauth2Credentials;
@@ -425,5 +428,175 @@ class SmtpClientTest extends TestCase
 
         $this->assertNotNull($mailFrom);
         $this->assertStringContainsString('SIZE=', $mailFrom);
+    }
+
+    public function testProcessQueueSendsEtrn(): void
+    {
+        $conn = $this->makeConnection([
+            'mail.example.com',
+            'ETRN',
+            'SIZE 10240000',
+        ]);
+        $conn->queueResponse(new SmtpResponse(250, ['OK']));
+
+        $client = new SmtpClient(
+            new SmtpConfig(security: SecureMode::None, localhost: 'myhost.local'),
+            connection: $conn,
+        );
+
+        $client->processQueue();
+
+        $this->assertSame('ETRN myhost.local', $conn->written[1]);
+    }
+
+    public function testProcessQueueWithExplicitHost(): void
+    {
+        $conn = $this->makeConnection([
+            'mail.example.com',
+            'ETRN',
+        ]);
+        $conn->queueResponse(new SmtpResponse(252, ['OK']));
+
+        $client = new SmtpClient(
+            new SmtpConfig(security: SecureMode::None),
+            connection: $conn,
+        );
+
+        $client->processQueue('remote.example.com');
+
+        $this->assertSame('ETRN remote.example.com', $conn->written[1]);
+    }
+
+    public function testProcessQueueNoopWithoutEtrn(): void
+    {
+        $conn = $this->makeConnection($this->defaultEhloLines());
+
+        $client = new SmtpClient(
+            new SmtpConfig(security: SecureMode::None),
+            connection: $conn,
+        );
+
+        $client->processQueue();
+
+        $this->assertCount(1, $conn->written);
+    }
+
+    public function testSendWithEaiAddressIncludesSmtputf8(): void
+    {
+        $conn = $this->makeConnection([
+            'mail.example.com',
+            'SIZE 10240000',
+            'PIPELINING',
+            '8BITMIME',
+            'SMTPUTF8',
+        ]);
+        $conn->queueResponse(new SmtpResponse(250));
+        $conn->queueResponse(new SmtpResponse(250));
+        $conn->queueResponse(new SmtpResponse(354));
+        $conn->queueResponse(new SmtpResponse(250));
+
+        $client = new SmtpClient(
+            new SmtpConfig(security: SecureMode::None),
+            connection: $conn,
+        );
+
+        $client->send('ünîcödé@example.com', 'to@example.com', "Subject: Test\r\n\r\nBody");
+
+        $mailFrom = null;
+        foreach ($conn->written as $line) {
+            if (str_starts_with($line, 'MAIL FROM:')) {
+                $mailFrom = $line;
+                break;
+            }
+        }
+
+        $this->assertNotNull($mailFrom);
+        $this->assertStringContainsString('SMTPUTF8', $mailFrom);
+        $this->assertStringContainsString('BODY=8BITMIME', $mailFrom);
+    }
+
+    public function testSendWithEaiRecipientIncludesSmtputf8(): void
+    {
+        $conn = $this->makeConnection([
+            'mail.example.com',
+            'SIZE 10240000',
+            '8BITMIME',
+            'SMTPUTF8',
+        ]);
+        $conn->queueResponse(new SmtpResponse(250));
+        $conn->queueResponse(new SmtpResponse(250));
+        $conn->queueResponse(new SmtpResponse(354));
+        $conn->queueResponse(new SmtpResponse(250));
+
+        $client = new SmtpClient(
+            new SmtpConfig(security: SecureMode::None),
+            connection: $conn,
+        );
+
+        $client->send('from@example.com', 'tö@example.com', "Subject: Test\r\n\r\nBody");
+
+        $mailFrom = null;
+        foreach ($conn->written as $line) {
+            if (str_starts_with($line, 'MAIL FROM:')) {
+                $mailFrom = $line;
+                break;
+            }
+        }
+
+        $this->assertNotNull($mailFrom);
+        $this->assertStringContainsString('SMTPUTF8', $mailFrom);
+    }
+
+    public function testSendWithEaiThrowsWithoutServerSupport(): void
+    {
+        $conn = $this->makeConnection($this->defaultEhloLines());
+
+        $client = new SmtpClient(
+            new SmtpConfig(security: SecureMode::None),
+            connection: $conn,
+        );
+
+        $this->expectException(SmtpException::class);
+        $this->expectExceptionMessage('SMTPUTF8');
+        $client->send('ünîcödé@example.com', 'to@example.com', "Subject: Test\r\n\r\nBody");
+    }
+
+    public function testSendDelegatesToDefaultStrategy(): void
+    {
+        $conn = $this->makeConnection($this->defaultEhloLines());
+        $conn->queueResponse(new SmtpResponse(250));
+        $conn->queueResponse(new SmtpResponse(250));
+        $conn->queueResponse(new SmtpResponse(354));
+        $conn->queueResponse(new SmtpResponse(250));
+
+        $client = new SmtpClient(
+            new SmtpConfig(
+                security: SecureMode::None,
+                strategy: new DefaultSendDataStrategy(),
+            ),
+            connection: $conn,
+        );
+
+        $result = $client->send('from@example.com', 'to@example.com', "Subject: Test\r\n\r\nBody");
+
+        $this->assertTrue($result->allSuccessful());
+    }
+
+    public function testSendWithoutExplicitStrategyUsesDefault(): void
+    {
+        $conn = $this->makeConnection($this->defaultEhloLines());
+        $conn->queueResponse(new SmtpResponse(250));
+        $conn->queueResponse(new SmtpResponse(250));
+        $conn->queueResponse(new SmtpResponse(354));
+        $conn->queueResponse(new SmtpResponse(250));
+
+        $client = new SmtpClient(
+            new SmtpConfig(security: SecureMode::None),
+            connection: $conn,
+        );
+
+        $result = $client->send('from@example.com', 'to@example.com', "Subject: Test\r\n\r\nBody");
+
+        $this->assertTrue($result->allSuccessful());
     }
 }
