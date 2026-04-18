@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Horde\Smtp\Test\Unit;
 
-use Horde\Smtp\DebugInterface;
+use Horde\Smtp\Debug;
 use Horde\Smtp\NullDebug;
 use Horde\Smtp\StreamDebug;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -18,7 +18,7 @@ class DebugImplTest extends TestCase
     {
         $debug = new NullDebug();
 
-        $this->assertInstanceOf(DebugInterface::class, $debug);
+        $this->assertInstanceOf(Debug::class, $debug);
     }
 
     public function testNullDebugNoOps(): void
@@ -38,7 +38,7 @@ class DebugImplTest extends TestCase
         $stream = fopen('php://memory', 'r+');
         $debug = new StreamDebug($stream);
 
-        $this->assertInstanceOf(DebugInterface::class, $debug);
+        $this->assertInstanceOf(Debug::class, $debug);
 
         fclose($stream);
     }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Horde\Smtp\Test\Unit;
 
 use Horde\Smtp\Credentials;
-use Horde\Smtp\DebugInterface;
+use Horde\Smtp\Debug;
 use Horde\Smtp\NullDebug;
 use Horde\Smtp\SmtpConfig;
 use Horde\Socket\Client\SecureMode;
