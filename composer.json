@@ -22,12 +22,11 @@
         "php": "^8.1",
         "horde/exception": "^3",
         "horde/mail": "^3",
-        "horde/socket_client": "^3",
+        "horde/socket_client": "^3.0@dev",
         "horde/support": "^3",
         "horde/translation": "^3",
         "horde/util": "^3"
     },
-    "require-dev": {},
     "suggest": {
         "horde/imap_client": "^3",
         "horde/secret": "^3",
@@ -36,6 +35,9 @@
     "autoload": {
         "psr-0": {
             "Horde_Smtp": "lib/"
+        },
+        "psr-4": {
+            "Horde\\Smtp\\": "src/"
         }
     },
     "autoload-dev": {
