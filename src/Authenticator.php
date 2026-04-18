@@ -43,14 +43,14 @@ interface Authenticator
      *
      * @param SmtpConnection $connection  Protocol connection for challenge-response.
      * @param Credentials $credentials  User credentials.
-     * @param DebugInterface $debug  Debug output (authenticators suppress credential logging).
+     * @param Debug $debug  Debug output (authenticators suppress credential logging).
      * @param string $serviceName  SASL service name ('smtp', 'imap', 'sieve').
      * @throws AuthenticationException  On failure.
      */
     public function authenticate(
         SmtpConnection $connection,
         Credentials $credentials,
-        DebugInterface $debug,
+        Debug $debug,
         string $serviceName = 'smtp',
     ): void;
 }

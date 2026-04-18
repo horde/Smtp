@@ -58,7 +58,7 @@ final class CramAuthenticator implements Authenticator
     public function authenticate(
         SmtpConnection $connection,
         Credentials $credentials,
-        DebugInterface $debug,
+        Debug $debug,
         string $serviceName = 'smtp',
     ): void {
         assert($credentials instanceof PasswordCredentials);
