@@ -30,6 +30,7 @@ dependencies:
   required:
     php: ^8.1
     composer:
+      horde/eventdispatcher: ^1
       horde/exception: ^3
       horde/mail: ^3
       horde/socket_client: ^3
