@@ -7,6 +7,7 @@ namespace Horde\Smtp\Test\Unit;
 use Horde_Smtp_Password_Xoauth2;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Horde_Smtp_Password;
 
 #[CoversClass(Horde_Smtp_Password_Xoauth2::class)]
 class Xoauth2Test extends TestCase
@@ -28,7 +29,7 @@ class Xoauth2Test extends TestCase
     {
         $xoauth2 = new Horde_Smtp_Password_Xoauth2('user@example.com', 'token');
 
-        $this->assertInstanceOf(\Horde_Smtp_Password::class, $xoauth2);
+        $this->assertInstanceOf(Horde_Smtp_Password::class, $xoauth2);
     }
 
     public function testUsernameIsAccessible(): void
