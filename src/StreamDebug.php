@@ -19,7 +19,7 @@ namespace Horde\Smtp;
  * Writes prefixed protocol traces to the stream.
  * Logs slow commands (over SLOW_CMD seconds) automatically.
  */
-final class StreamDebug implements DebugInterface
+final class StreamDebug implements Debug
 {
     private const SLOW_CMD = 5;
 

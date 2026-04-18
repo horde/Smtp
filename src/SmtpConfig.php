@@ -9,11 +9,13 @@ declare(strict_types=1);
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
  *
  * @author Michael Slusarz <slusarz@horde.org>
+ * @author Ralf Lang <ralf.lang@ralf-lang.de>
  */
 
 namespace Horde\Smtp;
 
 use Horde\Socket\Client\SecureMode;
+use Psr\EventDispatcher\EventDispatcherInterface;
 
 /**
  * Immutable configuration for an SMTP or LMTP connection.
@@ -33,6 +35,8 @@ final readonly class SmtpConfig
         public ?Credentials $credentials = null,
         public int $chunkSize = 1_048_576,
         public array $context = [],
-        public ?DebugInterface $debug = null,
+        public ?Debug $debug = null,
+        public ?Strategy $strategy = null,
+        public ?EventDispatcherInterface $eventDispatcher = null,
     ) {}
 }

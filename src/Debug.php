@@ -19,7 +19,7 @@ namespace Horde\Smtp;
  * @api-unstable Interface may change before 2.0 stable.
  *     Do not implement outside of horde packages.
  */
-interface DebugInterface
+interface Debug
 {
     /**
      * Log a client command.
