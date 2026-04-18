@@ -36,7 +36,7 @@ class Horde_Smtp_Filter_Body extends php_user_filter
     /**
      * @see stream_filter_register()
      */
-    #[\ReturnTypeWillChange]
+    #[ReturnTypeWillChange]
     public function onCreate()
     {
         $this->params->body = false;
@@ -47,7 +47,7 @@ class Horde_Smtp_Filter_Body extends php_user_filter
     /**
      * @see stream_filter_register()
      */
-    #[\ReturnTypeWillChange]
+    #[ReturnTypeWillChange]
     public function filter($in, $out, &$consumed, $closing)
     {
         $skip = ($this->params->body !== false);
