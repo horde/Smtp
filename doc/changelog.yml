@@ -9,7 +9,6 @@
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
   notes: |+
-    
 2.0.0alpha3:
   api: 2.0.0alpha1
   state:
@@ -42,6 +41,70 @@
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
   notes: |
+2.0.0-beta1:
+  api: 2.0.0-beta1
+  state:
+    release: beta
+    api: beta
+  date: 2026-04-19
+  license:
+    identifier: LGPL-2.1-only
+    uri: https://spdx.org/licenses/LGPL-2.1-only.html
+  notes: |-
+    chore: Update dependencies
+    docs: Upgrading guide and missing features
+    fix: legacy classes returntypewillchange
+    test: cover event and debug systems with tests
+    feat: Add Debugging and Event support
+    feat: Implement SMTP TLS Upgrade/Retry strategies
+    feat: Implement new-style authentication interface and methods
+    chore: metadata
+    fix: Null safety and return type on overrides of builtins
+    test: Cover new library layout with unit tests
+    feat: Implement a PSR-4 version of the library
+    test: Modernize and amend the unit test suite.
+    chore: Update metadata for PHP 8.1, add keywords, add more gitignore lines
+    style: php-cs-fixer
+    Merge pull request #4 from Schlue/FRAMEWORK_6_0
+    added __serialize
+    Development mode for Smtp-2.0.0alpha4
+    Released Smtp-2.0.0alpha3
+    Consolidated composer and unit test upgrades
+    Merge pull request #2 from kesselb/upstream/debt/doc-for-smtp-exception
+    docs: update doc for smtp exception
+    Development mode for Smtp-1.9.7
+    Released Smtp-1.9.6
+    [jan] Allow unencrypted access (nhirokinet@nhiroki.net, PR #1).
+    Enable plaintext SMTP access
+    Update supported PHP versions and configuration names.
+    Standardize descriptions.
+    Add chomp character.
+    Enable PHP 7.3 CI.
+    Update package definitions.
+    Fix getting exit code on PHP 7.2+.
+    Mark Chuck and Michael as inactive.
+    package.xml must not contain empty <notes> tags.
+    Create CHANGES for all components.
+    Regenerate package.xml from changelog.yml.
+    Build changelog.yml from existing changelog(s).
+    Update .horde.yml with extended information.
+    Update composer.json.
+    Enable 7.2 builds.
+    PEAR on 5.6 and 7.0 is fixed.
+    Update file list
+    Move phpunit configuration to base directory.
+    Indicate markup language.
+    Update references to COPYING files.
+    Use LICENSE consistently and move to base directory.
+    Stop flooding #horde channel.
+    Use https URLs.
+    Install all dependencies but PECL extensions.
+    Hopefully this finally fixes Travis builds now.
+    Always discover channel manually, due to Travis bug.
+    Fix Travis tests.
+    Add Travis configuration and .gitignore files.
+    Updated
+    Development mode for Horde_Smtp-1.9.6
 1.9.7:
   api: 1.9.0
   state:
