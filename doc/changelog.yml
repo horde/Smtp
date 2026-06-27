@@ -1,46 +1,14 @@
 ---
-2.0.0alpha4:
-  api: 2.0.0alpha1
-  state:
-    release: alpha
-    api: alpha
-  date: 2022-11-05
-  license:
-    identifier: LGPL-2.1
-    uri: http://www.horde.org/licenses/lgpl21
-  notes: |+
-2.0.0alpha3:
-  api: 2.0.0alpha1
-  state:
-    release: alpha
-    api: alpha
-  date: 2022-11-05
-  license:
-    identifier: LGPL-2.1
-    uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [rla] Alpha release for PHP 8.
-    |+
-2.0.0alpha2:
-  api: 2.0.0alpha1
-  state:
-    release: alpha
-    api: alpha
-  date: 2021-02-24
-  license:
-    identifier: LGPL-2.1
-    uri: http://www.horde.org/licenses/lgpl21
-  notes: |+
-2.0.0alpha1:
-  api: 2.0.0alpha1
+2.0.0:
+  api: 2.0.0
   state:
     release: stable
     api: stable
-  date: 2021-02-24
+  date: 2026-06-27
   license:
-    identifier: LGPL-2.1
-    uri: http://www.horde.org/licenses/lgpl21
-  notes: |
+    identifier: LGPL-2.1-only
+    uri: https://spdx.org/licenses/LGPL-2.1-only.html
+  notes: "chore: refresh qc fixes and platform deps\nchore: Update workflow dependency"
 2.0.0-beta1:
   api: 2.0.0-beta1
   state:
@@ -50,61 +18,47 @@
   license:
     identifier: LGPL-2.1-only
     uri: https://spdx.org/licenses/LGPL-2.1-only.html
-  notes: |-
-    chore: Update dependencies
-    docs: Upgrading guide and missing features
-    fix: legacy classes returntypewillchange
-    test: cover event and debug systems with tests
-    feat: Add Debugging and Event support
-    feat: Implement SMTP TLS Upgrade/Retry strategies
-    feat: Implement new-style authentication interface and methods
-    chore: metadata
-    fix: Null safety and return type on overrides of builtins
-    test: Cover new library layout with unit tests
-    feat: Implement a PSR-4 version of the library
-    test: Modernize and amend the unit test suite.
-    chore: Update metadata for PHP 8.1, add keywords, add more gitignore lines
-    style: php-cs-fixer
-    Merge pull request #4 from Schlue/FRAMEWORK_6_0
-    added __serialize
-    Development mode for Smtp-2.0.0alpha4
-    Released Smtp-2.0.0alpha3
-    Consolidated composer and unit test upgrades
-    Merge pull request #2 from kesselb/upstream/debt/doc-for-smtp-exception
-    docs: update doc for smtp exception
-    Development mode for Smtp-1.9.7
-    Released Smtp-1.9.6
-    [jan] Allow unencrypted access (nhirokinet@nhiroki.net, PR #1).
-    Enable plaintext SMTP access
-    Update supported PHP versions and configuration names.
-    Standardize descriptions.
-    Add chomp character.
-    Enable PHP 7.3 CI.
-    Update package definitions.
-    Fix getting exit code on PHP 7.2+.
-    Mark Chuck and Michael as inactive.
-    package.xml must not contain empty <notes> tags.
-    Create CHANGES for all components.
-    Regenerate package.xml from changelog.yml.
-    Build changelog.yml from existing changelog(s).
-    Update .horde.yml with extended information.
-    Update composer.json.
-    Enable 7.2 builds.
-    PEAR on 5.6 and 7.0 is fixed.
-    Update file list
-    Move phpunit configuration to base directory.
-    Indicate markup language.
-    Update references to COPYING files.
-    Use LICENSE consistently and move to base directory.
-    Stop flooding #horde channel.
-    Use https URLs.
-    Install all dependencies but PECL extensions.
-    Hopefully this finally fixes Travis builds now.
-    Always discover channel manually, due to Travis bug.
-    Fix Travis tests.
-    Add Travis configuration and .gitignore files.
-    Updated
-    Development mode for Horde_Smtp-1.9.6
+  notes: "chore: Update dependencies\ndocs: Upgrading guide and missing features\nfix: legacy classes returntypewillchange\ntest: cover event and debug systems with tests\nfeat: Add Debugging and Event support\nfeat: Implement SMTP TLS Upgrade/Retry strategies\nfeat: Implement new-style authentication interface and methods\nchore: metadata\nfix: Null safety and return type on overrides of builtins\ntest: Cover new library layout with unit tests\nfeat: Implement a PSR-4 version of the library\ntest: Modernize and amend the unit test suite.\nchore: Update metadata for PHP 8.1, add keywords, add more gitignore lines\nstyle: php-cs-fixer\nMerge pull request #4 from Schlue/FRAMEWORK_6_0\nadded __serialize\nDevelopment mode for Smtp-2.0.0alpha4\nReleased Smtp-2.0.0alpha3\nConsolidated composer and unit test upgrades\nMerge pull request #2 from kesselb/upstream/debt/doc-for-smtp-exception\ndocs: update doc for smtp exception\nDevelopment mode for Smtp-1.9.7\nReleased Smtp-1.9.6\n[jan] Allow unencrypted access (nhirokinet@nhiroki.net, PR #1).\nEnable plaintext SMTP access\nUpdate supported PHP versions and configuration names.\nStandardize descriptions.\nAdd chomp character.\nEnable PHP 7.3 CI.\nUpdate package definitions.\nFix getting exit code on PHP 7.2+.\nMark Chuck and Michael as inactive.\npackage.xml must not contain empty <notes> tags.\nCreate CHANGES for all components.\nRegenerate package.xml from changelog.yml.\nBuild changelog.yml from existing changelog(s).\nUpdate .horde.yml with extended information.\nUpdate composer.json.\nEnable 7.2 builds.\nPEAR on 5.6 and 7.0 is fixed.\nUpdate file list\nMove phpunit configuration to base directory.\nIndicate markup language.\nUpdate references to COPYING files.\nUse LICENSE consistently and move to base directory.\nStop flooding #horde channel.\nUse https URLs.\nInstall all dependencies but PECL extensions.\nHopefully this finally fixes Travis builds now.\nAlways discover channel manually, due to Travis bug.\nFix Travis tests.\nAdd Travis configuration and .gitignore files.\nUpdated\nDevelopment mode for Horde_Smtp-1.9.6"
+2.0.0alpha4:
+  api: 2.0.0alpha1
+  state:
+    release: alpha
+    api: alpha
+  date: 2022-11-05
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: ''
+2.0.0alpha3:
+  api: 2.0.0alpha1
+  state:
+    release: alpha
+    api: alpha
+  date: 2022-11-05
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: "[rla] Alpha release for PHP 8.\n|+\n"
+2.0.0alpha2:
+  api: 2.0.0alpha1
+  state:
+    release: alpha
+    api: alpha
+  date: 2021-02-24
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: ''
+2.0.0alpha1:
+  api: 2.0.0alpha1
+  state:
+    release: stable
+    api: stable
+  date: 2021-02-24
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: ''
 1.9.7:
   api: 1.9.0
   state:
@@ -114,7 +68,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |+
+  notes: ''
 1.9.6:
   api: 1.9.0
   state:
@@ -124,8 +78,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Allow unencrypted access (nhirokinet@nhiroki.net, PR #1).
+  notes: "[jan] Allow unencrypted access (nhirokinet@nhiroki.net, PR #1).\n"
 1.9.5:
   api: 1.9.0
   state:
@@ -135,8 +88,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Add Turkish translation (İTÜ BİDB <sistemdestek@itu.edu.tr>).
+  notes: "[jan] Add Turkish translation (İTÜ BİDB <sistemdestek@itu.edu.tr>).\n"
 1.9.4:
   api: 1.9.0
   state:
@@ -146,8 +98,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mjr] Fix RFC 3030 (CHUNKING) support.
+  notes: "[mjr] Fix RFC 3030 (CHUNKING) support.\n"
 1.9.3:
   api: 1.9.0
   state:
@@ -157,8 +108,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Add Greek translation (Limperis Antonis <limperis@cti.gr>).
+  notes: "[jan] Add Greek translation (Limperis Antonis <limperis@cti.gr>).\n"
 1.9.2:
   api: 1.9.0
   state:
@@ -168,8 +118,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Mark PHP 7 as supported.
+  notes: "[jan] Mark PHP 7 as supported.\n"
 1.9.1:
   api: 1.9.0
   state:
@@ -179,8 +128,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Fix issues with certain locales like Turkish.
+  notes: "[jan] Fix issues with certain locales like Turkish.\n"
 1.9.0:
   api: 1.9.0
   state:
@@ -190,11 +138,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Fix sending BODY keyword when debugging and SMTP server does not support 8BITMIME extension.
-    [jan] Add parameter for stream context settings (Request #13730).
-    [jan] Fix notice if server doesn't support ENHANCEDSTATUSCODES.
-    [mms] Add 'localhost' parameter to Horde_Smtp (Request #13832).
+  notes: "[mms] Fix sending BODY keyword when debugging and SMTP server does not support 8BITMIME extension.\n[jan] Add parameter for stream context settings (Request #13730).\n[jan] Fix notice if server doesn't support ENHANCEDSTATUSCODES.\n[mms] Add 'localhost' parameter to Horde_Smtp (Request #13832).\n"
 1.8.0:
   api: 1.8.0
   state:
@@ -204,8 +148,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Failed recipients can now be determined via the Horde_Smtp_Exception_Recipients exception thrown when calling Horde_Smtp#send().
+  notes: "[mms] Failed recipients can now be determined via the Horde_Smtp_Exception_Recipients exception thrown when calling Horde_Smtp#send().\n"
 1.7.0:
   api: 1.7.0
   state:
@@ -215,12 +158,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Added Horde_Smtp_Exception property indicating whether error is permanent or transient.
-    [mms] Determine EAI and Body transport information by analyzing the message data, instead of requiring a parameter.
-    [mms] Add support for ETRN extension (RFC 1985).
-    [mms] Add support for BINARYMIME extension (RFC 3030).
-    [mms] Add support for CHUNKING extension (RFC 3030).
+  notes: "[mms] Added Horde_Smtp_Exception property indicating whether error is permanent or transient.\n[mms] Determine EAI and Body transport information by analyzing the message data, instead of requiring a parameter.\n[mms] Add support for ETRN extension (RFC 1985).\n[mms] Add support for BINARYMIME extension (RFC 3030).\n[mms] Add support for CHUNKING extension (RFC 3030).\n"
 1.6.0:
   api: 1.6.0
   state:
@@ -230,8 +168,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Added support for sending internationalized header data (RFC 6531).
+  notes: "[mms] Added support for sending internationalized header data (RFC 6531).\n"
 1.5.2:
   api: 1.5.0
   state:
@@ -241,8 +178,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Add Spanish translation (Manuel Perez Ayala <mperaya@alcazaba.unex.es>).
+  notes: "[jan] Add Spanish translation (Manuel Perez Ayala <mperaya@alcazaba.unex.es>).\n"
 1.5.1:
   api: 1.5.0
   state:
@@ -252,8 +188,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Add Japanese translation (Hiromi Kimura <hiromi@tac.tsukuba.ac.jp>).
+  notes: "[jan] Add Japanese translation (Hiromi Kimura <hiromi@tac.tsukuba.ac.jp>).\n"
 1.5.0:
   api: 1.5.0
   state:
@@ -263,11 +198,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Fix harmless undefined error when accessing certain configuration parameters.
-    [mms] Horde_Smtp#send() now returns recipient status information if at least one recipient was successfully accepted.
-    [mms] Added an LMTP (RFC 2033) driver.
-    [jan] Add Hungarian translation (Andras Galos <galosa@netinform.hu>).
+  notes: "[mms] Fix harmless undefined error when accessing certain configuration parameters.\n[mms] Horde_Smtp#send() now returns recipient status information if at least one recipient was successfully accepted.\n[mms] Added an LMTP (RFC 2033) driver.\n[jan] Add Hungarian translation (Andras Galos <galosa@netinform.hu>).\n"
 1.4.1:
   api: 1.4.0
   state:
@@ -277,10 +208,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Add Danish translation (Erling Preben Hansen <erling@eph.dk>).
-    [mms] The mail submission port (587) should be default of this library.
-    [mms] Better exception message for a 550 error, since it is common and may be displayed to an end user (Request #12990).
+  notes: "[jan] Add Danish translation (Erling Preben Hansen <erling@eph.dk>).\n[mms] The mail submission port (587) should be default of this library.\n[mms] Better exception message for a 550 error, since it is common and may be displayed to an end user (Request #12990).\n"
 1.4.0:
   api: 1.4.0
   state:
@@ -290,8 +218,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Add raw error message text (in English) to Exceptions.
+  notes: "[mms] Add raw error message text (in English) to Exceptions.\n"
 1.3.1:
   api: 1.3.0
   state:
@@ -301,9 +228,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Fix handling servers that don't support ESMTP (Bug #12853).
-    [mms] Fix returning reply code in Exceptions.
+  notes: "[mms] Fix handling servers that don't support ESMTP (Bug #12853).\n[mms] Fix returning reply code in Exceptions.\n"
 1.3.0:
   api: 1.3.0
   state:
@@ -313,9 +238,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Added direct TLS v1.x connection option when connecting to remote server.
-    [mms] Added Horde_Smtp_Password_Xoauth2 class.
+  notes: "[mms] Added direct TLS v1.x connection option when connecting to remote server.\n[mms] Added Horde_Smtp_Password_Xoauth2 class.\n"
 1.2.6:
   api: 1.2.0
   state:
@@ -325,8 +248,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Fix handling EOLs split on a stream bucket boundary (Bug #12763).
+  notes: "[mms] Fix handling EOLs split on a stream bucket boundary (Bug #12763).\n"
 1.2.5:
   api: 1.2.0
   state:
@@ -336,8 +258,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Fix escaping periods that begin a line of DATA input.
+  notes: "[mms] Fix escaping periods that begin a line of DATA input.\n"
 1.2.4:
   api: 1.2.0
   state:
@@ -347,9 +268,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Explicitly reject XOAUTH2 as a authentication mechanism if it is not configured in the client.
-    [jan] Fix reading translations in PEAR-installed package.
+  notes: "[mms] Explicitly reject XOAUTH2 as a authentication mechanism if it is not configured in the client.\n[jan] Fix reading translations in PEAR-installed package.\n"
 1.2.3:
   api: 1.2.0
   state:
@@ -359,8 +278,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Fix parsing SMTP error message on servers that support ENHANCEDSTATUSCODES (Bug #12666).
+  notes: "[mms] Fix parsing SMTP error message on servers that support ENHANCEDSTATUSCODES (Bug #12666).\n"
 1.2.2:
   api: 1.2.0
   state:
@@ -370,9 +288,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Fix aborting a pipelined DATA command if only a subset of recipients were rejected (Bug #12659).
-    [mms] Don't auto-detect TLS availability again once we have done initial detection.
+  notes: "[mms] Fix aborting a pipelined DATA command if only a subset of recipients were rejected (Bug #12659).\n[mms] Don't auto-detect TLS availability again once we have done initial detection.\n"
 1.2.1:
   api: 1.2.0
   state:
@@ -382,8 +298,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Transparently handle required TLS connection when no security was configured.
+  notes: "[mms] Transparently handle required TLS connection when no security was configured.\n"
 1.2.0:
   api: 1.2.0
   state:
@@ -393,9 +308,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Change default security to use TLS, if available.
-    [mms] Fix storing password object in the Horde_Smtp object.
+  notes: "[mms] Change default security to use TLS, if available.\n[mms] Fix storing password object in the Horde_Smtp object.\n"
 1.1.0:
   api: 1.1.0
   state:
@@ -405,11 +318,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Deprecated the 'password_encrypt' parameter and instead support passing a Horde_Smtp_Password object into the 'password' parameter.
-    [mms] Fix DIGEST-MD5 authentication method.
-    [mms] Added support for the Google XOAuth2 authentication mechanism.
-    [jan] Fix detecting if connection to SMTP server fails.
+  notes: "[mms] Deprecated the 'password_encrypt' parameter and instead support passing a Horde_Smtp_Password object into the 'password' parameter.\n[mms] Fix DIGEST-MD5 authentication method.\n[mms] Added support for the Google XOAuth2 authentication mechanism.\n[jan] Fix detecting if connection to SMTP server fails.\n"
 1.0.0:
   api: 1.0.0
   state:
@@ -419,5 +328,4 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Initial release.
+  notes: "[mms] Initial release.\n"

@@ -18,10 +18,10 @@ authors:
     active: false
     role: lead
 version:
-  release: 2.0.0-beta1
+  release: 2.0.0
   api: 2.0.0alpha1
 state:
-  release: beta
+  release: stable
   api: alpha
 license:
   identifier: LGPL-2.1-only
