@@ -8,13 +8,11 @@ description: >-
 list: dev
 type: library
 authors:
-  -
-    name: Ralf Lang
+  - name: Ralf Lang
     user: rlang
     email: ralf.lang@ralf-lang.de
     role: maintainer
-  -
-    name: Michael Slusarz
+  - name: Michael Slusarz
     user: slusarz
     email: slusarz@horde.org
     active: false
@@ -53,3 +51,48 @@ vendor: horde
 quality:
   phpstan:
     level: 3
+ci-platform:
+  '8.1':
+    - php: '>=7.2'
+    - ext-dom
+    - ext-hash
+    - ext-pcre
+    - ext-simplexml
+    - ext-spl
+  '8.2':
+    - php: '>=7.2'
+    - ext-dom
+    - ext-hash
+    - ext-pcre
+    - ext-simplexml
+    - ext-spl
+  '8.3':
+    - php: '>=7.2'
+    - ext-dom
+    - ext-hash
+    - ext-pcre
+    - ext-simplexml
+    - ext-spl
+  '8.4':
+    - php: '>=7.2'
+    - ext-dom
+    - ext-hash
+    - ext-pcre
+    - ext-simplexml
+    - ext-spl
+  '8.5':
+    - php: '>=7.2'
+    - ext-dom
+    - ext-hash
+    - ext-pcre
+    - ext-simplexml
+    - ext-spl
+  '8.6':
+    - php: '>=7.2'
+    - ext-dom
+    - ext-hash
+    - ext-pcre
+    - ext-simplexml
+    - ext-spl
+ci-platform-flags:
+  needs_installer_plugin: false
